@@ -1,5 +1,5 @@
-rm -f clutchski-dotfiles-*.tar.gz
-wget http://github.com/clutchski/dotfiles/tarball/master
-tar zxfv clutchski-dotfiles-*.tar.gz
-cd clutchski-dotfiles*
+rm -f xcolour-dotfiles-*.tar.gz
+wget http://github.com/xcolour/dotfiles/tarball/master
+tar zxfv xcolour-dotfiles-*.tar.gz
+cd xcolour-dotfiles*
 ./deploy.sh
