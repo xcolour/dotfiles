@@ -24,6 +24,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
+set listchars=tab:»·,trail:·
+set list
 
 "
 " filetype-specific
