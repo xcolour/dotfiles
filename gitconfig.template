@@ -15,5 +15,8 @@
     editor = vim
     autocrlf = input
 
+[push]
+    default = nothing
+
 [color]
     ui = true
