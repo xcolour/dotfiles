@@ -40,7 +40,7 @@ if has("autocmd")
   au FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
 
   " text files
-  au BufRead,BufNewFile *.txt      setlocal filetype=text
+  au BufRead,BufNewFile *.txt       setlocal filetype=text
 
   " php files
   au BufRead,BufNewFile *.module    setlocal filetype=php
@@ -49,7 +49,7 @@ if has("autocmd")
 
   " html templates
   au BufRead,BufNewFile *.mako      setlocal filetype=html
-  au BufRead,BufNewFile *.ftl      setlocal filetype=html
+  au BufRead,BufNewFile *.ftl       setlocal filetype=html
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
