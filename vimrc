@@ -64,6 +64,6 @@ endif
 " visual
 "
 
-color fruit
+color desert
 syntax on
 set hlsearch
