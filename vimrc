@@ -67,3 +67,9 @@ endif
 color desert
 syntax on
 set hlsearch
+
+"
+" plugins
+"
+
+helptags $HOME/.vim/doc      " load all plugin docs
