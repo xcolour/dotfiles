@@ -37,7 +37,7 @@ if has("autocmd")
 
   au!
   au FileType text setlocal textwidth=72
-  au FileType html setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType html,xhtml setlocal ts=2 sw=2 sts=2 expandtab
   au FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
 
   " text files
