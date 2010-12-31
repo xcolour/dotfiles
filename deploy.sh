@@ -11,7 +11,7 @@ read email
 sed -e "s|#NAME#|$name|" -e "s|#EMAIL#|$email|" gitconfig.template > gitconfig
 
 # deploy
-for f in vimrc gitconfig gitignore
+for f in vimrc gitconfig gitignore mostrc zshrc
 do
     cp $f ~/.${f}
 done
