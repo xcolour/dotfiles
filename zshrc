@@ -29,10 +29,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/texlive/2009basic/bin/universal-darwin:$PATH
 export PATH=$HOME/bin:$PATH
 
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-fi
+export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
 
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
@@ -56,7 +53,7 @@ function svn_prompt_info {
 
 PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}
 $(git_prompt_info)$(svn_prompt_info)$(prompt_char) %{$reset_color%}'
-RPROMPT='%t'
+RPROMPT='%D{%r}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
@@ -65,4 +62,3 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$reset_color%}"
 
 export PAGER=most
 export EDITOR=vim
-export FIGNORE=CVS:.svn
