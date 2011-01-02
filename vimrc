@@ -37,7 +37,9 @@ if has("autocmd")
 
   au!
   au FileType text setlocal textwidth=72
-  au FileType html,xhtml setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType html setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType xhtml setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType htmldjango setlocal ts=2 sw=2 sts=2 expandtab
   au FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
 
   " text files
@@ -51,6 +53,10 @@ if has("autocmd")
   " html templates
   au BufRead,BufNewFile *.mako      setlocal filetype=html
   au BufRead,BufNewFile *.ftl       setlocal filetype=html
+
+  " zsh configs and scripts
+  au BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
+  au BufRead,BufNewFile *.zsh       setlocal filetype=zsh
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
