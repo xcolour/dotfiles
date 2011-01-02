@@ -2,6 +2,18 @@
 
 set -e
 
+# check for dependencies
+echo "Checking for dependencies"
+echo " oh-my-zsh..."
+if [ ! -e ~/.oh-my-zsh/lib ]; then
+    echo "  not found!"
+    exit 1
+fi
+if [ ! -e ~/.oh-my-zsh/themes ]; then
+    echo "  not found!"
+    exit 1
+fi
+
 # template git profile
 echo "enter your global git user name:"
 read name
