@@ -16,6 +16,9 @@ do
     cp $f ~/.${f}
 done
 
+cp oh-my-zsh/svn.zsh ~/.oh-my-zsh/lib/svn.zsh
+cp oh-my-zsh/xcolour.zsh-theme ~/.oh-my-zsh/themes/xcolour.zsh-theme
+
 mkdir -p ~/.vim
 cp -r vim/* ~/.vim
 
