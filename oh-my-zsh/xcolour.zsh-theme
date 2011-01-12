@@ -7,7 +7,7 @@ function prompt_char {
 }
 
 PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}
-$(git_prompt_info)$(svn_prompt_info)$(prompt_char) %{$reset_color%}'
+$(prompt_char) %{$reset_color%}'
 RPROMPT='%D{%r}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="("
