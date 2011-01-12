@@ -22,14 +22,22 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-# MacPorts Installer addition on 2010-04-13_at_22:39:42: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-export PATH=/usr/local/texlive/2009basic/bin/universal-darwin:$PATH
-export PATH=$HOME/bin:$PATH
-
 export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
 
-export PAGER=most
 export EDITOR=vim
+
+bindkey "\e[3~" delete-char
+
+if [ -e $HOME/.zshrc-local ]; then
+    source $HOME/.zshrc-local
+fi
+
+# runs after local because 'most' isn't standard,
+# and macports will be set up in local
+if [[ -e $(which most) ]]; then
+    export PAGER=most
+fi
+
+# run after local because local because user bin should
+# take absolute priority
+export PATH=$HOME/bin:$PATH
