@@ -41,3 +41,7 @@ fi
 # run after local because local because user bin should
 # take absolute priority
 export PATH=$HOME/bin:$PATH
+
+function preexec () {
+    echo "($fg[magenta]`date +%r`$reset_color) $fg[cyan]$3$reset_color"
+}
