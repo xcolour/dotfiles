@@ -9,7 +9,7 @@ export ZSH_THEME="xcolour"
 export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
@@ -33,7 +33,7 @@ if [ -e $HOME/.zshrc-local ]; then
 fi
 
 # runs after local because 'most' isn't standard,
-# and macports will be set up in local
+# and may be provided by a local path addition
 if [[ -e $(which most) ]]; then
     export PAGER=most
 fi
