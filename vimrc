@@ -70,6 +70,13 @@ if has("autocmd")
 endif
 
 "
+" bindings
+"
+
+" NERDTree
+noremap <C-e> :NERDTreeToggle<Enter>
+
+"
 " visual
 "
 
