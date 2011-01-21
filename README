@@ -1,5 +1,5 @@
 rm -f xcolour-dotfiles-*.tar.gz
 wget --no-check-certificate https://www.github.com/xcolour/dotfiles/tarball/master
 tar zxfv xcolour-dotfiles-*.tar.gz
-cd xcolour-dotfiles*
+cd xcolour-dotfiles-*/
 ./deploy.sh
