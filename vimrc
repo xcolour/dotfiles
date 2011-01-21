@@ -75,6 +75,7 @@ endif
 
 " NERDTree
 noremap <C-e> :NERDTreeToggle<Enter>
+let NERDTreeMapActivateNode='<Space>'
 
 "
 " visual
