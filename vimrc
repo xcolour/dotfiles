@@ -41,6 +41,7 @@ if has("autocmd")
   au FileType xhtml setlocal ts=2 sw=2 sts=2 expandtab
   au FileType htmldjango setlocal ts=2 sw=2 sts=2 expandtab
   au FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType eruby setlocal ts=2 sw=2 sts=2 expandtab
 
   " text files
   au BufRead,BufNewFile *.txt       setlocal filetype=text
