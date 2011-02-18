@@ -17,7 +17,7 @@ do
 done
 
 mkdir -p ~/.zsh
-cp oh-my-zsh/* ~/.zsh
+cp zsh/* ~/.zsh
 
 mkdir -p ~/.vim
 cp -r vim/* ~/.vim
