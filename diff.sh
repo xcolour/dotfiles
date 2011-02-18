@@ -10,9 +10,7 @@ diff -U 0 mostrc ~/.mostrc
 echo
 diff -U 0 zshrc ~/.zshrc
 echo
-diff -U 0 oh-my-zsh/svn.zsh ~/.oh-my-zsh/lib/svn.zsh
-echo
-diff -U 0 oh-my-zsh/xcolour.zsh-theme ~/.oh-my-zsh/themes/xcolour.zsh-theme
+diff -U 0 zsh ~/.zsh
 
 echo
 diff -r -U 0 vim ~/.vim

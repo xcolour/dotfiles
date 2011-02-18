@@ -1,0 +1,10 @@
+#done
+
+preexec () {
+    term_preexec $*
+    theme_preexec $*
+}
+
+precmd () {
+    term_precmd
+}

@@ -57,6 +57,7 @@ if has("autocmd")
 
   " zsh configs and scripts
   au BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
+  au BufRead,BufNewFile *.zsh-overrides setlocal filetype=zsh
   au BufRead,BufNewFile *.zsh       setlocal filetype=zsh
 
   " ruby files

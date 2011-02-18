@@ -1,5 +1,4 @@
-# utility functions for subversion
-# based on oh-my-zsh git lib module
+#done
 
 function svn_dirty {
     if [[ -n $(svn status) ]]; then
