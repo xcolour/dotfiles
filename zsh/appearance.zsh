@@ -38,4 +38,4 @@ function return_code {
 }
 
 PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}
-$(return_code)$(git_prompt_info)$(prompt_char) %{$reset_color%}'
+$(return_code)$(svn_prompt_info)$(git_prompt_info)$(prompt_char) %{$reset_color%}'
