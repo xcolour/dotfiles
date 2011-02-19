@@ -13,4 +13,4 @@ echo
 diff -U 0 zsh ~/.zsh
 
 echo
-diff -r -U 0 vim ~/.vim
+diff -r -U 0 -x "tags" vim ~/.vim
