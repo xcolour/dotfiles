@@ -22,12 +22,6 @@ function theme_preexec () {
     echo "($fg[magenta]`date +%r`$reset_color) $fg[cyan]$3$reset_color"
 }
 
-function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    svn info >/dev/null 2>/dev/null && echo 'ϟ' && return
-    echo '$'
-}
-
 function return_code {
     code=$(echo $?)
     if [[ $code == "0" ]]; then
@@ -37,5 +31,22 @@ function return_code {
     fi
 }
 
+function svn_prompt_info {
+    info=$(svn info 2>/dev/null) || return
+    rev=$(echo "$info" | grep Revision | sed 's/Revision: //')
+    echo "(r${rev}) "
+}
+
+function git_prompt_info {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "(${ref#refs/heads/}) "
+}
+
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '±' && return
+    svn info >/dev/null 2>/dev/null && echo 'ϟ' && return
+    echo '$'
+}
+
 PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}
-$(return_code)$(svn_prompt_info)$(git_prompt_info)$(prompt_char) %{$reset_color%}'
+$(return_code)$(svn_prompt_info)$(git_prompt_info)$(prompt_char)%{$reset_color%} '
