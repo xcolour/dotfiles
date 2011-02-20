@@ -1,22 +1,8 @@
-# TODO: figure these out
+#done
 
-autoload -U compinit
-compinit -i
+bindkey -e # use emacs mode
+bindkey '^r' history-incremental-search-backward # ctrl-r
+bindkey '^[[Z' reverse-menu-complete # shift-tab
 
-bindkey -e
-bindkey '\ew' kill-region
-bindkey -s '\el' "ls\n"
-bindkey -s '\e.' "..\n"
-bindkey '^r' history-incremental-search-backward
-bindkey "^[[5~" up-line-or-history
-bindkey "^[[6~" down-line-or-history
-
-bindkey "^[[H" beginning-of-line
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[F"  end-of-line
-bindkey "^[[4~" end-of-line
-bindkey ' ' magic-space    # also do history expansion on space
-
-bindkey '^[[Z' reverse-menu-complete
-
-bindkey "\e[3~" delete-char # make sure delete key works
+bindkey '\e[3~' delete-char # make sure delete key works
+bindkey ' ' magic-space # also do history expansion on space
