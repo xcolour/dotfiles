@@ -44,7 +44,7 @@ case "$TERM" in
     term_preexec () {
       local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]}
       echo -ne "\ek$CMD\e\\"
-      print -Pn "\e]0;%n@%m:%~($1)\a"  # xterm
+      print -Pn "\e]0;%n@%m:%~ ($1)\a"  # xterm
     }
     term_precmd () {
       echo -ne "\ekzsh\e\\"
