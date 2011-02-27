@@ -75,6 +75,9 @@ endif
 " bindings
 "
 
+noremap <C-x> :source ~/.vimrc<Enter>
+noremap <C-a> :call RunSpec()<Enter>
+
 " NERDTree
 noremap <C-e> :NERDTreeToggle<Enter>
 let NERDTreeMapActivateNode='<Space>'
@@ -92,3 +95,11 @@ set hlsearch
 "
 
 helptags $HOME/.vim/doc      " load all plugin docs
+
+"
+" local additions
+"
+
+if filereadable($HOME."/.vimrc-local")
+    source ~/.vimrc-local
+endif
