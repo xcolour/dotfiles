@@ -1,5 +1,3 @@
-#done
-
 bindkey -e # use emacs mode
 bindkey '^r' history-incremental-search-backward # ctrl-r
 bindkey '^[[Z' reverse-menu-complete # shift-tab

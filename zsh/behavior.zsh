@@ -31,6 +31,8 @@ setopt hist_verify # load hist into command buffer rather than exec immediately
 #
 # term support
 
+# set term title appropriately based on term type
+# user@host:current_dir (current_command)
 case "$TERM" in
   xterm*|rxvt*)
     term_preexec () {
