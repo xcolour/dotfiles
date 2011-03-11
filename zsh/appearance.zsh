@@ -1,15 +1,15 @@
-autoload colors; colors;
-setopt prompt_subst # enable expansion of color codes, etc. in the prompt
+#
+# colorize shell programs
 
-# Find the option for using colors in ls, depending on the version: Linux or BSD
+# ls (platform dependent)
 ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
 
-# enable colorful grep output
+# grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-# enable colorful less output
+# less
 export LESS_TERMCAP_mb=$'\e[0;31m'     # begin blinking      - red
 export LESS_TERMCAP_md=$'\e[0;34m'     # begin bold          - blue
 export LESS_TERMCAP_me=$'\e[0m'        # end mode
@@ -18,13 +18,19 @@ export LESS_TERMCAP_se=$'\e[0m'        # end standout mode
 export LESS_TERMCAP_us=$'\e[4;33m'     # begin underline     - yellow underline
 export LESS_TERMCAP_ue=$'\e[0m'        # end underline
 
+#
+# make a sweet prompt
+
+autoload colors; colors;
+setopt prompt_subst # expansion of color codes, etc. in the prompt
+
 # print the fully resolved shell command with time stamp
 # to be run from zsh's builtin 'preexec' with all arguments passed through ($*)
 function theme_preexec () {
     echo "($fg[magenta]`date +%r`$reset_color) $fg[cyan]$3$reset_color"
 }
 
-# print the exit code in red if nonzero
+# print the exit code of the previous command in red if non-zero
 function return_code {
     code=$(echo $?)
     if [[ $code == "0" ]]; then
@@ -34,20 +40,20 @@ function return_code {
     fi
 }
 
-# print the svn revision number when in an svn repo (rREVISION)
+# print the svn revision number (rREVISION)
 function svn_prompt_info {
     info=$(svn info 2>/dev/null) || return
     rev=$(echo "$info" | grep Revision | sed 's/Revision: //')
     echo "(r${rev}) "
 }
 
-# print the git branch name when in a git repo (BRANCH)
+# print the current git branch (BRANCH)
 function git_prompt_info {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "(${ref#refs/heads/}) "
 }
 
-# print a special prompt character depending on the vcs of the current dir
+# print a special prompt char in version controlled directories
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
     svn info >/dev/null 2>/dev/null && echo 'ϟ' && return
