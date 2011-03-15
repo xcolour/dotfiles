@@ -60,6 +60,22 @@ function prompt_char {
     echo '$'
 }
 
+# virtualenv
+function ve_prompt_info {
+    if [[ $IN_VIRTUALENV == "true" ]]; then
+        echo "%{$fg[green]%}℘ %{$reset_color%}"
+    fi
+}
+
+# print the hostname in green if local, else red
+function hostname_info {
+    if [[ $ZSH_LOCAL_ENV == "true" ]]; then
+        echo "%{$fg[green]%}%m%{$reset_color%}"
+    else
+        echo "%{$fg[green]%}%{$bg[red]%}%m%{$reset_color%}"
+    fi
+}
+
 # a colorful multiline prompt using the above defined functions
-PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}
-$(return_code)$(svn_prompt_info)$(git_prompt_info)$(prompt_char)%{$reset_color%} '
+PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@$(hostname_info):%{$fg[blue]%}%~%{$reset_color%}
+$(return_code)$(ve_prompt_info)$(svn_prompt_info)$(git_prompt_info)$(prompt_char)%{$reset_color%} '
