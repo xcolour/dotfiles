@@ -32,7 +32,7 @@ function theme_preexec () {
 
 # print the exit code of the previous command in red if non-zero
 function return_code {
-    echo "%(?..$fg[red]%?$reset_color )"
+    echo "%(?..%{$fg[red]%}%?%{$reset_color%} )"
 }
 
 # print the svn revision number (rREVISION)
