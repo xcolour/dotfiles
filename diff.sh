@@ -2,6 +2,8 @@
 
 diff -U 0 vimrc ~/.vimrc
 echo
+diff -U 0 gvimrc ~/.gvimrc
+echo
 diff -U 0 gitconfig.template ~/.gitconfig
 echo
 diff -U 0 gitignore ~/.gitignore
