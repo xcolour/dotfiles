@@ -2,8 +2,13 @@
 # colorize shell programs
 
 # ls (platform dependent)
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
-export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
+if $(ls --color -d . &>/dev/null 2>&1); then
+    alias ls='ls --color=tty'
+    export LS_COLORS="di=34;40:ln=36;40:so=31;40:pi=33;40:ex=32;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+else
+    alias ls='ls -G'
+    export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
+fi
 
 # grep
 export GREP_OPTIONS='--color=auto'
