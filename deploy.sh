@@ -2,25 +2,14 @@
 
 set -e
 
-# template git profile
-echo "enter your global git user name:"
-read name
-echo "enter your global git e-mail:"
-read email
-
-sed -e "s|#NAME#|$name|" -e "s|#EMAIL#|$email|" gitconfig.template > gitconfig
+rm -rf dotfiles-backup
+mkdir -p dotfiles-backup
 
 # deploy
-for f in vimrc gvimrc gitconfig gitignore zshrc
+for f in vimrc gvimrc gitconfig gitignore zshrc zsh vim
 do
-    cp $f ~/.${f}
+    if [ -e ~/.${f} ]; then
+        mv ~/.${f} dotfiles-backup/${f}
+    fi
+    ln -s `pwd`/${f} ~/.${f}
 done
-
-mkdir -p ~/.zsh
-cp zsh/* ~/.zsh
-
-mkdir -p ~/.vim
-cp -r vim/* ~/.vim
-
-# clean-up
-rm gitconfig
