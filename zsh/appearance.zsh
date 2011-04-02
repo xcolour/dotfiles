@@ -2,12 +2,19 @@
 # colorize shell programs
 
 # ls (platform dependent)
-if $(ls --color -d . &>/dev/null 2>&1); then
-    alias ls='ls --color=tty'
-    export LS_COLORS="di=34;40:ln=36;40:so=31;40:pi=33;40:ex=32;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+if [ -e /usr/local/bin/gls ]; then
+    # if GNU ls is installed (e.g. on BSD), use it
+    alias ls='/usr/local/bin/gls --color=tty'
+    export LS_COLORS="rs=0:di=34:ln=36:mh=00:pi=40;33:so=35:do=35:bd=40;33:cd=40;33:or=40;31:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=32"
 else
-    alias ls='ls -G'
-    export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
+    # otherwise, detect which version of ls is on the path
+    if $(ls --color -d . &>/dev/null 2>&1); then
+        alias ls='ls --color=tty'
+        export LS_COLORS="rs=0:di=34:ln=36:mh=00:pi=40;33:so=35:do=35:bd=40;33:cd=40;33:or=40;31:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=32"
+    else
+        alias ls='ls -G'
+        export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
+    fi
 fi
 
 # grep
