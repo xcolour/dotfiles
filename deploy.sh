@@ -13,3 +13,7 @@ do
     fi
     ln -s `pwd`/${f} ~/.${f}
 done
+
+if [ ! -e ~/.zshrc-local ]; then
+    cp zshrc-local ~/.zshrc-local
+fi
