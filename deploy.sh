@@ -11,7 +11,7 @@ do
     if [ -e ~/.${f} ]; then
         mv ~/.${f} dotfiles-backup/${f}
     fi
-    ln -s `pwd`/${f} ~/.${f}
+    ln -sf `pwd`/${f} ~/.${f}
 done
 
 if [ ! -e ~/.zshrc-local ]; then
