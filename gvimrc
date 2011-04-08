@@ -2,4 +2,4 @@
 
 set guifont=Menlo\ Regular:h16.00
 set guioptions-=T
-set lines=35
+set lines=9999 "just make it as tall as possible
