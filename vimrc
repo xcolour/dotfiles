@@ -11,6 +11,8 @@ set ignorecase    " ignore case in search
 set smartcase     " respect case in search if uppercase is used
 set nowrap        " do not wrap lines
 set backspace=indent,eol,start " backspace over all stuff
+set cursorcolumn  " highlight the current column
+set cursorline    " highlight the current line
 
 "
 " formatting
@@ -34,12 +36,12 @@ if has("autocmd")
   filetype plugin indent on
 
   au!
-  au FileType text setlocal textwidth=72
-  au FileType html setlocal ts=2 sw=2 sts=2 expandtab
-  au FileType xhtml setlocal ts=2 sw=2 sts=2 expandtab
-  au FileType htmldjango setlocal ts=2 sw=2 sts=2 expandtab
-  au FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
-  au FileType eruby setlocal ts=2 sw=2 sts=2 expandtab
+  au FileType text                  setlocal tw=72
+  au FileType html                  setlocal ts=2 sw=2 sts=2
+  au FileType xhtml                 setlocal ts=2 sw=2 sts=2
+  au FileType ruby                  setlocal ts=2 sw=2 sts=2
+  au FileType eruby                 setlocal ts=2 sw=2 sts=2
+  au FileType htmldjango            setlocal ts=2 sw=2 sts=2
 
   " text files
   au BufRead,BufNewFile *.txt       setlocal filetype=text
