@@ -12,7 +12,6 @@ set smartcase     " respect case in search if uppercase is used
 set nowrap        " do not wrap lines
 set backspace=indent,eol,start " backspace over all stuff
 set cursorcolumn  " highlight the current column
-set cursorline    " highlight the current line
 
 "
 " formatting
@@ -36,7 +35,7 @@ if has("autocmd")
   filetype plugin indent on
 
   au!
-  au FileType text                  setlocal tw=72
+  au FileType text                  setlocal tw=72 ts=2 sw=2 sts=2
   au FileType html                  setlocal ts=2 sw=2 sts=2
   au FileType xhtml                 setlocal ts=2 sw=2 sts=2
   au FileType ruby                  setlocal ts=2 sw=2 sts=2
