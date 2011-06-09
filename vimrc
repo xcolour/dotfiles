@@ -54,6 +54,9 @@ if has("autocmd")
   au BufRead,BufNewFile *.mako      setlocal filetype=html
   au BufRead,BufNewFile *.ftl       setlocal filetype=html
 
+  " css templates
+  au BufRead,BufNewFile *.less      setlocal filetype=css
+
   " zsh configs and scripts
   au BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
   au BufRead,BufNewFile *.zsh-overrides setlocal filetype=zsh
