@@ -77,9 +77,9 @@ function ve_prompt_info {
 # print the hostname in green if local, else red
 function hostname_info {
     if [[ $ZSH_LOCAL_ENV == "true" ]]; then
-        echo "%{$fg[green]%}%m%{$reset_color%}"
+        echo "%{$fg[green]%}%{$ZSH_HOST_PREFIX%}%m%{$ZSH_HOST_SUFFIX%}%{$reset_color%}"
     else
-        echo "%{$fg[green]%}%{$bg[red]%}%m%{$reset_color%}"
+        echo "%{$fg[green]%}%{$bg[red]%}%{$ZSH_HOST_PREFIX%}%m%{$ZSH_HOST_SUFFIX%}%{$reset_color%}"
     fi
 }
 
