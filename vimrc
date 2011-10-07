@@ -84,6 +84,11 @@ noremap <C-a> :call RunSpec()<Enter>
 noremap <C-e> :NERDTreeToggle<Enter>
 let NERDTreeMapActivateNode='<Space>'
 
+" bufexplore
+noremap ,fe :BufExplorer<Enter>
+noremap ,fs :BufExplorerHorizontalSplit<Enter>
+noremap ,fv :BufExplorerVerticalSplit<Enter>
+
 "
 " visual
 "
