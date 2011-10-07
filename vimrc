@@ -82,6 +82,7 @@ noremap <C-a> :call RunSpec()<Enter>
 
 " NERDTree
 noremap <C-e> :NERDTreeToggle<Enter>
+noremap ,e :NERDTreeToggle<Enter>
 let NERDTreeMapActivateNode='<Space>'
 
 " bufexplore
