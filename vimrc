@@ -94,12 +94,9 @@ noremap ,fv :BufExplorerVerticalSplit<Enter>
 " visual
 "
 
-set background=light
-if !has('gui_running')
-    let g:solarized_termcolors=16
-endif
-colo solarized
 syntax on
+set background=light
+colo solarized
 set hlsearch
 
 "
