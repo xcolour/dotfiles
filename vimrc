@@ -41,6 +41,7 @@ if has("autocmd")
   au FileType ruby                  setlocal ts=2 sw=2 sts=2
   au FileType eruby                 setlocal ts=2 sw=2 sts=2
   au FileType htmldjango            setlocal ts=2 sw=2 sts=2
+  au FileType coffee                setlocal ts=2 sw=2 sts=2
 
   " text files
   au BufRead,BufNewFile *.txt       setlocal filetype=text
@@ -78,7 +79,6 @@ endif
 "
 
 noremap <C-x> :source ~/.vimrc<Enter>
-noremap <C-a> :call RunSpec()<Enter>
 
 " NERDTree
 noremap <C-e> :NERDTreeToggle<Enter>
