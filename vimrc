@@ -94,6 +94,7 @@ noremap ,fv :BufExplorerVerticalSplit<Enter>
 " visual
 "
 
+let g:solarized_visibility="high"    "trailing characters very visible
 syntax on
 set background=light
 colo solarized
