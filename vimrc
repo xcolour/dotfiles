@@ -94,7 +94,8 @@ noremap ,fv :BufExplorerVerticalSplit<Enter>
 " visual
 "
 
-let g:solarized_visibility="high"    "trailing characters very visible
+let g:solarized_visibility="high"  "trailing characters very visible
+let g:solarized_menu=0             "don't show the gui menu
 syntax on
 set background=light
 colo solarized
