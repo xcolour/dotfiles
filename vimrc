@@ -90,22 +90,22 @@ endif
 let mapleader = ","
 
 " convenience
-noremap <leader>x :source ~/.vimrc<Enter>
-noremap <leader><leader> <c-^>
+nnoremap <leader>x :source ~/.vimrc<Enter>
+nnoremap <leader><leader> <c-^>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " NERDTree
-noremap <C-e> :NERDTreeToggle<Enter>
-noremap <leader>e :NERDTreeToggle<Enter>
+nnoremap <C-e> :NERDTreeToggle<Enter>
+nnoremap <leader>e :NERDTreeToggle<Enter>
 let NERDTreeMapActivateNode='<Space>'
 
 " bufexplore
-noremap <leader>fe :BufExplorer<Enter>
-noremap <leader>fs :BufExplorerHorizontalSplit<Enter>
-noremap <leader>fv :BufExplorerVerticalSplit<Enter>
+nnoremap <leader>fe :BufExplorer<Enter>
+nnoremap <leader>fs :BufExplorerHorizontalSplit<Enter>
+nnoremap <leader>fv :BufExplorerVerticalSplit<Enter>
 
 " ctrlp
 let g:ctrlp_map ='<leader>a'
