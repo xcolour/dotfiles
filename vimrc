@@ -1,4 +1,10 @@
 "
+" register pathogen
+"
+
+runtime bundle/pathogen/autoload/pathogen.vim
+
+"
 " behavior
 "
 
