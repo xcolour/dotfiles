@@ -44,7 +44,8 @@ if has("autocmd")
   filetype plugin indent on
 
   au!
-  au FileType text                  setlocal tw=72 ts=2 sw=2 sts=2
+  au FileType text                  setlocal tw=80 ts=2 sw=2 sts=2
+  au FileType markdown              setlocal tw=80 ts=2 sw=2 sts=2
   au FileType html                  setlocal ts=2 sw=2 sts=2
   au FileType xhtml                 setlocal ts=2 sw=2 sts=2
   au FileType ruby                  setlocal ts=2 sw=2 sts=2
@@ -55,10 +56,8 @@ if has("autocmd")
   " text files
   au BufRead,BufNewFile *.txt       setlocal filetype=text
 
-  " php files
-  au BufRead,BufNewFile *.module    setlocal filetype=php
-  au BufRead,BufNewFile *.inc       setlocal filetype=php
-  au BufRead,BufNewFile *.install   setlocal filetype=php
+  " markdown
+  au BufRead,BufNewFile *.md        setlocal filetype=markdown
 
   " html templates
   au BufRead,BufNewFile *.mako      setlocal filetype=html
@@ -68,7 +67,6 @@ if has("autocmd")
   au BufRead,BufNewFile *.less      setlocal filetype=css
 
   " zsh configs and scripts
-  au BufRead,BufNewFile *.zsh-theme setlocal filetype=zsh
   au BufRead,BufNewFile *.zsh-overrides setlocal filetype=zsh
   au BufRead,BufNewFile *.zsh       setlocal filetype=zsh
 
