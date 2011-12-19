@@ -3,6 +3,8 @@
 "
 
 runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
 
 "
 " behavior
@@ -106,12 +108,6 @@ syntax on
 set background=light
 colo solarized
 set hlsearch
-
-"
-" plugins
-"
-
-helptags $HOME/.vim/doc      " load all plugin docs
 
 "
 " local additions
