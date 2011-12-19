@@ -1,6 +1,7 @@
 for config_file (~/.zsh/*.zsh) source $config_file
 
 export EDITOR=vim
+export LANG=en_US.UTF-8
 
 if [ -e $HOME/.zshrc-local ]; then
     source $HOME/.zshrc-local

@@ -12,7 +12,7 @@ call pathogen#helptags()
 
 set nocompatible  " use vim, not vi settings
 set wildmenu      " command line tab completion menu
-set wildignore=*.pyc,.git
+set wildignore=*.pyc,.git " ignore from autocomplete
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
