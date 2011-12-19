@@ -1,5 +1,3 @@
-## Installation
-
 You're going to want to make changes, so before you do anything, fork this repo
 and make it your own.
 
