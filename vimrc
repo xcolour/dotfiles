@@ -21,6 +21,8 @@ set smartcase     " respect case in search if uppercase is used
 set nowrap        " do not wrap lines
 set backspace=indent,eol,start " backspace over all stuff
 set cursorcolumn  " highlight the current column
+set cursorline    " highlight the current line
+set vb t_vb=      " no beeping
 
 "
 " formatting
