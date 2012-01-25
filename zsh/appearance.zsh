@@ -10,7 +10,7 @@ else
     # otherwise, detect which version of ls is on the path
     if $(ls --color -d . &>/dev/null 2>&1); then
         alias ls='ls --color=tty'
-        eval `gdircolors ~/.dircolors.conf`
+        eval `dircolors ~/.dircolors.conf`
     else
         alias ls='ls -G'
         export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
