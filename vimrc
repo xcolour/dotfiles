@@ -23,6 +23,7 @@ set backspace=indent,eol,start " backspace over all stuff
 set cursorcolumn  " highlight the current column
 set cursorline    " highlight the current line
 set vb t_vb=      " no beeping
+set laststatus=2  " always show the status line
 
 "
 " formatting
