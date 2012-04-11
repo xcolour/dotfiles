@@ -65,6 +65,7 @@ if has("autocmd")
   " html templates
   au BufRead,BufNewFile *.mako      setlocal filetype=html
   au BufRead,BufNewFile *.ftl       setlocal filetype=html
+  au BufRead,BufNewFile *.handlebars setlocal filetype=html ts=4 sts=4 sw=4
 
   " css templates
   au BufRead,BufNewFile *.less      setlocal filetype=css
@@ -97,6 +98,8 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " NERDTree
 nnoremap <C-e> :NERDTreeToggle<Enter>
@@ -110,6 +113,10 @@ nnoremap <leader>fv :BufExplorerVerticalSplit<Enter>
 
 " ctrlp
 let g:ctrlp_map ='<leader>a'
+
+" solarized
+nnoremap <leader>vl :let g:solarized_visibility="low" | colo solarized<Enter>
+nnoremap <leader>vh :let g:solarized_visibility="high" | colo solarized<Enter>
 
 "
 " visual
