@@ -124,6 +124,7 @@ nnoremap <leader>vh :let g:solarized_visibility="high" | colo solarized<Enter>
 
 let g:solarized_visibility="high"  "trailing characters very visible
 let g:solarized_menu=0             "don't show the gui menu
+set synmaxcol=500
 syntax on
 set background=light
 colo solarized
