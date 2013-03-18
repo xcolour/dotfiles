@@ -69,8 +69,8 @@ function prompt_char {
 
 # virtualenv
 function ve_prompt_info {
-    if [[ $IN_VIRTUALENV == "true" ]]; then
-        echo "%{$fg[green]%}℘ %{$reset_color%}"
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "(%{$fg[green]%}$(basename $VIRTUAL_ENV)%{$reset_color%}) "
     fi
 }
 

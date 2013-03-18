@@ -54,3 +54,10 @@ case "$TERM" in
     }
     ;;
 esac
+
+#
+# virtualenv
+
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+export WORKON_HOME=~/.virtualenv/envs
+source /usr/local/bin/virtualenvwrapper.sh
