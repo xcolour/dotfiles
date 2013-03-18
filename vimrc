@@ -129,6 +129,7 @@ syntax on
 set background=light
 colo solarized
 set hlsearch
+highlight clear SignColumn    " don't mess up gutter highlight with gitgutter
 
 "
 " local additions
