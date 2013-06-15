@@ -7,17 +7,6 @@ setopt rm_star_wait # wait 10 seconds before accepting 'rm *' confirmation
 export REPORTTIME=5 # report timing for any command longer than 5 seconds
 
 #
-# correction
-
-setopt correct_all
-
-alias man='nocorrect man'
-alias mv='nocorrect mv'
-alias mysql='nocorrect mysql'
-alias psql='nocorrect psql'
-alias mkdir='nocorrect mkdir'
-
-#
 # history
 
 HISTFILE=$HOME/.zsh_history
