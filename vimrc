@@ -20,8 +20,6 @@ set ignorecase    " ignore case in search
 set smartcase     " respect case in search if uppercase is used
 set nowrap        " do not wrap lines
 set backspace=indent,eol,start " backspace over all stuff
-set cursorcolumn  " highlight the current column
-set cursorline    " highlight the current line
 set vb t_vb=      " no beeping
 set laststatus=2  " always show the status line
 
@@ -98,8 +96,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-inoremap jk <Esc>
-inoremap kj <Esc>
 
 " NERDTree
 nnoremap <C-e> :NERDTreeToggle<Enter>
