@@ -96,9 +96,10 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+"nnoremap <??> 10<c-e> 10j
+"nnoremap <??> 10<c-y> 10k
 
 " NERDTree
-nnoremap <C-e> :NERDTreeToggle<Enter>
 nnoremap <leader>e :NERDTreeToggle<Enter>
 let NERDTreeMapActivateNode='<Space>'
 
