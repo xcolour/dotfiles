@@ -23,22 +23,11 @@ setopt hist_verify # load hist into command buffer rather than exec immediately
 # set term title appropriately based on term type
 # user@host:current_dir (current_command)
 case "$TERM" in
-  xterm*|rxvt*)
+  xterm*|rxvt*|screen*)
     term_preexec () {
       print -Pn "\e]0;%n@%m:%~ ($1)\a"  # xterm
     }
     term_precmd () {
-      print -Pn "\e]0;%n@%m:%~\a"  # xterm
-    }
-    ;;
-  screen*)
-    term_preexec () {
-      local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]}
-      echo -ne "\ek$CMD\e\\"
-      print -Pn "\e]0;%n@%m:%~ ($1)\a"  # xterm
-    }
-    term_precmd () {
-      echo -ne "\ekzsh\e\\"
       print -Pn "\e]0;%n@%m:%~\a"  # xterm
     }
     ;;
