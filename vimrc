@@ -16,6 +16,7 @@ Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'pangloss/vim-javascript'
 
 "
 " behavior
