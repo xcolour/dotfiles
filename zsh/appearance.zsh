@@ -47,31 +47,48 @@ function return_code {
     echo "%(?..%{$fg[red]%}%?%{$reset_color%} )"
 }
 
-# print the svn revision number (rREVISION)
-function svn_prompt_info {
-    info=$(svn info 2>/dev/null) || return
-    rev=$(echo "$info" | grep Revision | sed 's/Revision: //')
-    echo "(r${rev}) "
-}
+function repo_prompt_info {
 
-# print the current git branch (BRANCH)
-function git_prompt_info {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "(${ref#refs/heads/}) "
-}
-
-# print a special prompt char in version controlled directories
-function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    svn info >/dev/null 2>/dev/null && echo 'ϟ' && return
-    echo '$'
-}
-
-# virtualenv
-function ve_prompt_info {
-    if [ -n "$VIRTUAL_ENV" ]; then
-        echo "(%{$fg[green]%}$(basename $VIRTUAL_ENV)%{$reset_color%}) "
+    # git
+    ref=$(git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null)
+    if [ $? -eq 0 ]; then
+        #repo=$(basename $(git rev-parse --show-toplevel))
+        echo "%{$fg[cyan]%}%{\e[1m%}${ref#refs/heads/}%{$reset_color%}"
+        return
     fi
+
+    # svn
+    info=$(svn info 2>/dev/null)
+    if [ $? -eq 0 ]; then
+        rev=$(echo "$info" | grep Revision | sed 's/Revision: //')
+        echo "%{$fg[cyan]%}%{\e[1m%}r${rev}%{$reset_color%}"
+        return
+    fi
+}
+
+function env_prompt_info {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "%{$fg[green]%}$(basename $VIRTUAL_ENV)%{$reset_color%}"
+        return
+    fi
+}
+
+function workspace_prompt_info {
+    environment=$(env_prompt_info)
+    repo=$(repo_prompt_info)
+    if [ "$environment" -a "$repo" ]; then
+        echo "[$environment|$repo] $"
+        return
+    fi
+    if [ "$environment" ]; then
+        echo "[$environment] $"
+        return
+    fi
+    if [ "$repo" ]; then
+        echo "[$repo] $"
+        return
+    fi
+    echo "$"
 }
 
 # print the hostname in green if local, else red
@@ -84,5 +101,5 @@ function hostname_info {
 }
 
 # a colorful multiline prompt using the above defined functions
-PROMPT='%{$fg[yellow]%}%n%{$reset_color%}@$(hostname_info):%{$fg[blue]%}%~%{$reset_color%}
-$(return_code)$(ve_prompt_info)$(svn_prompt_info)$(git_prompt_info)$(prompt_char)%{$reset_color%} '
+PROMPT=$'%{$fg[yellow]%}%n%{$reset_color%}@$(hostname_info):%{$fg[blue]%}%~%{$reset_color%}
+$(return_code)$(workspace_prompt_info)%{$reset_color%} '
