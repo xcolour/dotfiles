@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'pangloss/vim-javascript'
+Bundle 'jnwhiteh/vim-golang'
 
 "
 " behavior
