@@ -1,4 +1,6 @@
-for config_file (~/.zsh/*.zsh) source $config_file
+for config_file (~/.zsh/*.zsh); do
+    source $config_file
+done
 
 export EDITOR=vim
 export LANG=en_US.UTF-8

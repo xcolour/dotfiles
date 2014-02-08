@@ -2,13 +2,13 @@
 # colorize shell programs
 
 # ls (platform dependent)
-if [ -e /usr/local/bin/gls ]; then
-    # if GNU ls is installed (e.g. on BSD), use it
-    alias ls='/usr/local/bin/gls --color=tty'
+if which gls > /dev/null; then
+    # if GNU coreutils are installed under the 'g' prefix
+    alias ls='gls --color=tty'
     eval `gdircolors ~/.dircolors.conf`
 else
     # otherwise, detect which version of ls is on the path
-    if $(ls --color -d . &>/dev/null 2>&1); then
+    if ls --color -d . &>/dev/null 2>&1; then
         alias ls='ls --color=tty'
         eval `dircolors ~/.dircolors.conf`
     else
