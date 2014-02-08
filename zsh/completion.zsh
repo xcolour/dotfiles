@@ -1,28 +1,21 @@
-# TODO: figure this thing out
-
-unsetopt menu_complete   # do not autoselect the first completion entry
-unsetopt flowcontrol
-setopt auto_menu         # show completion menu on succesive tab press
-setopt complete_in_word
-setopt always_to_end
-
-WORDCHARS=''
-
+# initialize the completion system
 autoload -U compinit
-compinit -i
+zmodload zsh/complist
+compinit
 
-zmodload -i zsh/complist
+# insert first completion immediately
+setopt menu_complete
 
-zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# use GNU ls color specification for completion menu
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-zstyle ':completion:*' list-colors ''
+# use menu selection by default
+zstyle ':completion:*:default' menu select
 
-# should this be in keybindings?
-bindkey -M menuselect '^o' accept-and-infer-next-history
-
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+# custom completion list for processes (just current user's)
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+# special colors for kill completion listing
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
@@ -41,7 +34,6 @@ zstyle ':completion:*:hosts' hosts $hosts
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path ~/.oh-my-zsh/cache/
 
 # Don't complete uninteresting users
 zstyle ':completion:*:*:*:users' ignored-patterns \
@@ -54,6 +46,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 
 # ... unless we really want to.
-zstyle '*' single-ignored show
+zstyle ':completion:*' single-ignored show
 
+# always rehash commands list
 zstyle ':completion:*:commands' rehash 1
