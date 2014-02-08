@@ -39,5 +39,5 @@ esac
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=true
     export WORKON_HOME=~/.virtualenv/envs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
