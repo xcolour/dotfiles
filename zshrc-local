@@ -5,6 +5,5 @@
 # get tex binaries on the path
 #export PATH=/usr/local/texlive/2009basic/bin/universal-darwin:$PATH
 
-# if unset, certain shell features behave differently
-# e.g. prompt hostname is highlighted in red for non-local envs
+# prompt hostname is highlighted in red for non-local envs
 #export ZSH_LOCAL_ENV=true
