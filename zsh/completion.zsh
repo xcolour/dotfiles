@@ -3,8 +3,8 @@ autoload -U compinit
 zmodload zsh/complist
 compinit
 
-# insert first completion immediately
-setopt menu_complete
+# complete only after the second consecutive tab
+setopt auto_menu
 
 # use GNU ls color specification for completion menu
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
