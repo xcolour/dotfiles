@@ -24,10 +24,10 @@ setopt hist_verify # load hist into command buffer rather than exec immediately
 case "$TERM" in
   xterm*|rxvt*|screen*)
     term_preexec () {
-      print -Pn "\e]0;%n@%m:%~ ($1)\a"  # xterm
+        printf '\e]0;%s (%s)\a' ${(%):-'%n@%m:%~'} "$1"
     }
     term_precmd () {
-      print -Pn "\e]0;%n@%m:%~\a"  # xterm
+        printf '\e]0;%s\a' ${(%):-'%n@%m:%~'}
     }
     ;;
 esac
