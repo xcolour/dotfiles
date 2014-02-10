@@ -40,3 +40,15 @@ if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=~/.virtualenv/envs
     source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
+
+#
+# draw a horizontal separator
+
+function hr {
+    printf "$fg[blue]${(l:$COLUMNS::█:)}"
+    printf "$fg[cyan]${(l:$COLUMNS::█:)}"
+    printf "$fg[green]${(l:$COLUMNS::█:)}"
+    printf "$fg[yellow]${(l:$COLUMNS::█:)}"
+    printf "$fg[red]\e[1m${(l:$COLUMNS::█:)}"
+    printf "$reset_color"
+}
