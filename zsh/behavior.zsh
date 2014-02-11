@@ -45,10 +45,9 @@ fi
 # draw a horizontal separator
 
 function hr {
-    printf "$fg[blue]${(l:$COLUMNS::█:)}"
-    printf "$fg[cyan]${(l:$COLUMNS::█:)}"
-    printf "$fg[green]${(l:$COLUMNS::█:)}"
-    printf "$fg[yellow]${(l:$COLUMNS::█:)}"
-    printf "$fg[red]\e[1m${(l:$COLUMNS::█:)}"
-    printf "$reset_color"
+    printf "$fg[blue]${(l:$COLUMNS::█:)}\n"
+    printf "$fg[cyan]${(l:$COLUMNS::█:)}\n"
+    printf "$fg[green]${(l:$COLUMNS::█:)}\n"
+    printf "$fg[yellow]${(l:$COLUMNS::█:)}\n"
+    printf "$fg[red]\e[1m${(l:$COLUMNS::█:)}$reset_color\n"
 }
