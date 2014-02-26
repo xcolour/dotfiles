@@ -17,9 +17,9 @@ bind   pad6:alt  push right  bar-resize:screenSizeX/2
 bind  right:alt  push right  bar-resize:screenSizeX/2
 
 # fullscreen
-bind  pad5:alt  move 0;0 screenSizeX;screenSizeY
-bind     0:alt  move 0;0 screenSizeX;screenSizeY
+bind  pad5:alt  move screenOriginX;screenOriginY screenSizeX;screenSizeY
+bind     0:alt  move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # center
-bind  pad2:alt  move (screenSizeX/2)-((screenSizeX*2)/6);0 (screenSizeX*2)/3;screenSizeY
-bind  down:alt  move (screenSizeX/2)-((screenSizeX*2)/6);0 (screenSizeX*2)/3;screenSizeY
+bind  pad2:alt  move (screenOriginX+(screenSizeX/2)-((screenSizeX*2)/6));screenOriginY (screenSizeX*2)/3;screenSizeY
+bind  down:alt  move (screenOriginX+(screenSizeX/2)-((screenSizeX*2)/6));screenOriginY (screenSizeX*2)/3;screenSizeY
