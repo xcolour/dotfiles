@@ -58,3 +58,8 @@ function hr {
     printf "$bg[blue]${(l:$COLUMNS:: :)}\n"
     printf "$bg[magenta]${(l:$COLUMNS:: :)}\n"
 }
+
+#
+# less
+
+export LESS=-i
