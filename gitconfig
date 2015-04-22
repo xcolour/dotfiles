@@ -15,9 +15,20 @@
     editor = vim
     autocrlf = input
     excludesfile = /Users/matt/.gitignore
+    pager = less -+$LESS -RSX
 
 [push]
     default = nothing
 
 [color]
     ui = true
+
+[mergetool]
+    keepTemporaries = false
+    prompt = false
+
+[merge]
+    tool = meld
+
+[diff]
+    tool = meld
