@@ -25,7 +25,7 @@ end)
 hotkey.bind({"alt"}, "down", function()
     local win = window.focusedwindow()
     if win ~= nil then
-        win:movetounit({x=0.15, y=0, w=0.70, h=1})
+        win:movetounit({x=0.167, y=0, w=0.666, h=1})
     end
 end)
 
