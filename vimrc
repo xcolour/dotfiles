@@ -15,9 +15,11 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'chase/vim-ansible-yaml'
+Bundle 'scrooloose/syntastic'
+Bundle 'airblade/vim-gitgutter'
 
 "
 " behavior
@@ -127,6 +129,24 @@ let g:ctrlp_map ='<leader>a'
 " solarized
 nnoremap <leader>vl :let g:solarized_visibility="low" | colo solarized<Enter>
 nnoremap <leader>vh :let g:solarized_visibility="high" | colo solarized<Enter>
+
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_python_flake8_args = "--ignore=E501"
+function! ToggleSyntasticErrors()
+    if !exists('w:syn_errors_enabled')
+        let w:syn_errors_enabled = 0
+    endif
+    if w:syn_errors_enabled
+        lclose
+        let w:syn_errors_enabled = 0
+    else
+        Errors
+        let w:syn_errors_enabled = 1
+    endif
+endfunction
+nnoremap <leader>r :call ToggleSyntasticErrors()<Enter>
+
 
 "
 " visual
