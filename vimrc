@@ -14,12 +14,13 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 "
 " behavior
@@ -163,6 +164,11 @@ set hlsearch
 " don't mess up gutter highlight with gitgutter
 highlight clear SignColumn
 hi! link SignColumn Background
+
+let g:airline_left_sep=''
+let g:airline_left_alt_sep='|'
+let g:airline_right_sep=''
+let g:airline_right_alt_sep='|'
 
 "
 " local additions
