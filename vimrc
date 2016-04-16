@@ -69,6 +69,7 @@ if has("autocmd")
   au FileType eruby                 setlocal ts=2 sw=2 sts=2
   au FileType htmldjango            setlocal ts=2 sw=2 sts=2
   au FileType coffee                setlocal ts=2 sw=2 sts=2
+  au FileType php                   setlocal ts=2 sw=2 sts=2
 
   " text files
   au BufRead,BufNewFile *.txt       setlocal filetype=text
