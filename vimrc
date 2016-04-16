@@ -165,6 +165,13 @@ set hlsearch
 highlight clear SignColumn
 hi! link SignColumn Background
 
+" Highlight non-ascii characters
+" Run this late to override solarized
+if has("autocmd")
+  highlight nonascii guibg=Red ctermbg=1 term=standout
+  au BufReadPost * syntax match nonascii /[^\d0-\d127]/
+endif
+
 let g:airline_left_sep=''
 let g:airline_left_alt_sep='|'
 let g:airline_right_sep=''
