@@ -135,6 +135,7 @@ nnoremap <leader>vh :let g:solarized_visibility="high" | colo solarized<Enter>
 " syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_flake8_args = "--ignore=E501"
+let g:syntastic_sh_shellcheck_args = "-x"
 function! ToggleSyntasticErrors()
     if !exists('w:syn_errors_enabled')
         let w:syn_errors_enabled = 0
