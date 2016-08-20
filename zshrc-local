@@ -5,5 +5,12 @@
 # get tex binaries on the path
 #export PATH=/usr/local/texlive/2009basic/bin/universal-darwin:$PATH
 
+# get sbin on your path
+#export PATH="/usr/local/sbin:/usr/sbin:/sbin:${PATH}"
+
+# start the ssh agent on login and stop on logout
+#eval `ssh-agent -s`
+#trap 'eval `ssh-agent -k`' 0
+
 # prompt hostname is highlighted in red for non-local envs
 #export ZSH_LOCAL_ENV=true
