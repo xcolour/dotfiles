@@ -11,7 +11,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'iCyMind/NeoSolarized'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
@@ -156,12 +156,13 @@ nnoremap <leader>r :call ToggleSyntasticErrors()<Enter>
 " visual
 "
 
+set termguicolors                  "true color
 let g:solarized_visibility="high"  "trailing characters very visible
 let g:solarized_menu=0             "don't show the gui menu
 set synmaxcol=500
 syntax on
 set background=light
-colo solarized
+colo NeoSolarized
 set hlsearch
 
 " don't mess up gutter highlight with gitgutter
