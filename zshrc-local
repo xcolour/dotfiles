@@ -1,12 +1,19 @@
+# get sbin on the path
+#export PATH="/usr/sbin:/sbin:$PATH"
+
 # move homebrew stuff to the beginning of the search path
-#export PATH=/usr/local/bin:$PATH
-#export MANPATH=/usr/local/man:$MANPATH
+#export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+#export MANPATH="/usr/local/man:$MANPATH"
+#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+#export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+#export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+#export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+#export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+#export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+#export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 
-# get tex binaries on the path
-#export PATH=/usr/local/texlive/2009basic/bin/universal-darwin:$PATH
-
-# get sbin on your path
-#export PATH="/usr/local/sbin:/usr/sbin:/sbin:${PATH}"
+# Java
+#export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 # start the ssh agent on login and stop on logout
 #eval `ssh-agent -s`
