@@ -1,20 +1,12 @@
 #
 # colorize shell programs
 
-# ls (platform dependent)
-if which gls > /dev/null; then
-    # if GNU coreutils are installed under the 'g' prefix
-    alias ls='gls --color=tty'
-    eval `gdircolors ~/.dircolors.conf`
+if ls --color -d . &>/dev/null 2>&1; then
+    alias ls='ls --color=tty'
+    eval `dircolors ~/.dircolors.conf`
 else
-    # otherwise, detect which version of ls is on the path
-    if ls --color -d . &>/dev/null 2>&1; then
-        alias ls='ls --color=tty'
-        eval `dircolors ~/.dircolors.conf`
-    else
-        alias ls='ls -G'
-        export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
-    fi
+    alias ls='ls -G'
+    export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
 fi
 
 # grep
