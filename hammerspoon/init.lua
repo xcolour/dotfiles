@@ -1,5 +1,6 @@
 local window = require "hs.window"
 local hotkey = require "hs.hotkey"
+local geom = require "hs.geometry"
 
 window.animationDuration = 0
 
@@ -25,7 +26,12 @@ end)
 hotkey.bind({"alt"}, "down", function()
     local win = window.focusedWindow()
     if win ~= nil then
-        win:moveToUnit({x=0.167, y=0, w=0.666, h=1})
+       local screen_frame = win:screen():frame()
+       local new_geom = geom.copy(win:frame())
+       new_geom.w = 1280
+       new_geom.h = screen_frame.h
+       new_geom.center = screen_frame.center
+       win:setFrame(new_geom)
     end
 end)
 
