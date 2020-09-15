@@ -17,11 +17,11 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'chase/vim-ansible-yaml'
-Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-eunuch'
+Plugin 'dense-analysis/ale'
 
 "
 " behavior
@@ -132,24 +132,6 @@ let g:ctrlp_map ='<leader>a'
 " solarized
 nnoremap <leader>vl :let g:solarized_visibility="low" | colo solarized<Enter>
 nnoremap <leader>vh :let g:solarized_visibility="high" | colo solarized<Enter>
-
-" syntastic
-let g:syntastic_check_on_open = 1
-let g:syntastic_python_flake8_args = "--ignore=E501"
-let g:syntastic_sh_shellcheck_args = "-x"
-function! ToggleSyntasticErrors()
-    if !exists('w:syn_errors_enabled')
-        let w:syn_errors_enabled = 0
-    endif
-    if w:syn_errors_enabled
-        lclose
-        let w:syn_errors_enabled = 0
-    else
-        Errors
-        let w:syn_errors_enabled = 1
-    endif
-endfunction
-nnoremap <leader>r :call ToggleSyntasticErrors()<Enter>
 
 
 "
