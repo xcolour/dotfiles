@@ -56,7 +56,7 @@ function hr {
     printf "$bg[green]${(l:$COLUMNS:: :)}\n"
     printf "$bg[cyan]${(l:$COLUMNS:: :)}\n"
     printf "$bg[blue]${(l:$COLUMNS:: :)}\n"
-    printf "$bg[magenta]${(l:$COLUMNS:: :)}\n"
+    printf "$bg[magenta]${(l:$COLUMNS:: :)}$reset_color\n"
 }
 
 #
