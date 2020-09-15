@@ -10,8 +10,10 @@ else
 fi
 
 # grep
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # less
 export LESS_TERMCAP_mb=$'\e[0;31m'     # begin blinking      - red
