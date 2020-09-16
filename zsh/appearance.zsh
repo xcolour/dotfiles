@@ -36,7 +36,7 @@ function theme_preexec () {
     echo "($fg[magenta]`date +%r`$reset_color) $fg[cyan]$3$reset_color"
 }
 
-# print the prompt charin red if last command exited non-zero
+# print the prompt char in red if the last command exited non-zero
 function prompt_char {
     echo "%(?.$.%{$fg[red]%}$%{$reset_color%})"
 }
