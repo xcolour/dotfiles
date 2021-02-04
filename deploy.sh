@@ -23,7 +23,7 @@ do
 done
 cd ..
 
-for f in vimrc gvimrc gitconfig gitignore zshrc zsh dircolors.conf hammerspoon
+for f in vimrc gvimrc gitconfig gitignore zshrc zsh dircolors.conf
 do
     if [ -e ~/.${f} ]; then
         mv ~/.${f} dotfiles-backup/${f}
