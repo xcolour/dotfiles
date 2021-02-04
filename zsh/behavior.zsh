@@ -22,7 +22,7 @@ setopt hist_verify # load hist into command buffer rather than exec immediately
 # set term title appropriately based on term type
 # user@host:current_dir (current_command)
 case "$TERM" in
-  xterm*|rxvt*|screen*)
+  xterm*|rxvt*|screen*|alacritty*)
     term_preexec () {
         printf '\e]0;%s (%s)\a' ${(%):-'%n@%m:%~'} "$1"
     }
