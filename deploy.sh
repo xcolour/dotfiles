@@ -6,7 +6,24 @@ rm -rf dotfiles-backup
 mkdir -p dotfiles-backup
 
 # deploy
-for f in vimrc gvimrc gitconfig gitignore zshrc zsh dircolors.conf tmux.conf hammerspoon
+if [ -z "$XDG_CONFIG_HOME" ];
+then
+    config_home="$HOME/.config"
+else
+    config_home="$XDG_CONFIG_HOME"
+fi
+cd xdg-config
+for d in *
+do
+    dest="$config_home/$d"
+    if [ -e "$dest" ]; then
+        mv "$dest" ../dotfiles-backup/$d
+    fi
+    ln -sf "$(pwd)/$d" "$dest"
+done
+cd ..
+
+for f in vimrc gvimrc gitconfig gitignore zshrc zsh dircolors.conf hammerspoon
 do
     if [ -e ~/.${f} ]; then
         mv ~/.${f} dotfiles-backup/${f}
