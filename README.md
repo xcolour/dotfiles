@@ -1,23 +1,16 @@
-You're going to want to make changes, so before you do anything, fork this repo
-and make it your own.
-
-Clone it somewhere on your local machine:
-
-    $ git clone git://github.com/xcolour/dotfiles.git ~/.dotfiles
-
-Then run the deploy script:
+Install dotfiles with the deploy script:
 
     $ sh deploy.sh
 
-This script does the following:
- - Clear out `$PWD/dotfiles-backup/`.
- - Back up any existing dotfiles to `$PWD/dotfiles-backup/`.
- - Replace existing dotfiles with symlinks to the corresponding file in the
-   repo.
- - Clone Vundle into `~/.vim/bundle/vundle/` and run `BundleInstall`.
-   will back up any existing dotfiles to `$PWD/dotfiles-backup/`
- - Create `~/.zshrc-local` (if one doesn't already exist) for setting up local
-   behavior. Take a look inside for ideas.
+Tries to follow the [XDG base directory
+spec](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
+as much as possible.
 
-The prompt will highligh the local host name in red unless `ZSH_LOCAL_ENV=true`
-is set. That's a good one for `~/.zshrc-local`.
+The script does the following:
+ - Clear out `$PWD/dotfiles-backup/`.
+ - Symlink everything under `config` into `$XDG_CONFIG_HOME`. Moves everything
+   that already exists to `$PWD/dotfiles-backup/` first.
+ - Symlink `vimrc` and `zshrc` into `$HOME`. Again back up existing files to
+   `$PWD/dotfiles-backup`.
+ - Clone Vundle into `~/.vim/bundle/vundle/` and run `BundleInstall`.
+ - Create `~/.zshrc-local` if one doesn't already exist.

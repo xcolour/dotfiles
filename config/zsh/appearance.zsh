@@ -3,7 +3,7 @@
 
 if ls --color -d . &>/dev/null 2>&1; then
     alias ls='ls --color=tty'
-    eval `dircolors ~/.dircolors.conf`
+    eval `dircolors ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors.conf`
 else
     alias ls='ls -G'
     export LSCOLORS="exgxbxdxcxegedxbxgxcxd"

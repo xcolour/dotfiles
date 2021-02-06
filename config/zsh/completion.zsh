@@ -1,7 +1,7 @@
 # initialize the completion system
 autoload -U compinit
 zmodload zsh/complist
-compinit
+compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 
 # complete only after the second consecutive tab
 setopt auto_menu

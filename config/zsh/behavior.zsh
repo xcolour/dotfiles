@@ -8,7 +8,7 @@ unsetopt flowcontrol  # disable ^s from freezing the terminal
 #
 # history
 
-HISTFILE=$HOME/.zsh_history
+HISTFILE="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh/history"
 HISTSIZE=10000
 SAVEHIST=10000
 

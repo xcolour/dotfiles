@@ -5,25 +5,26 @@ set -e
 rm -rf dotfiles-backup
 mkdir -p dotfiles-backup
 
+# XDG layout
+xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
+xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
+xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
 # deploy
-if [ -z "$XDG_CONFIG_HOME" ];
-then
-    config_home="$HOME/.config"
-else
-    config_home="$XDG_CONFIG_HOME"
-fi
-cd xdg-config
+mkdir -p "${xcache}/zsh"
+mkdir -p "${xdata}/zsh"
+cd config
 for d in *
 do
-    dest="$config_home/$d"
+    dest="${xconfig}/$d"
     if [ -e "$dest" ]; then
-        mv "$dest" ../dotfiles-backup/$d
+        mv "$dest" "../dotfiles-backup/$d"
     fi
     ln -sf "$(pwd)/$d" "$dest"
 done
 cd ..
 
-for f in vimrc gvimrc gitconfig gitignore zshrc zsh dircolors.conf
+for f in vimrc zshenv
 do
     if [ -e ~/.${f} ]; then
         mv ~/.${f} dotfiles-backup/${f}
@@ -40,6 +41,6 @@ fi
 vim +BundleInstall +qall
 vim +BundleClean +qall
 
-if [ ! -e ~/.zshrc-local ]; then
-    cp zshrc-local ~/.zshrc-local
+if [ ! -e config/zsh/zshrc-local ]; then
+    cp zshrc-local config/zsh/zshrc-local
 fi
