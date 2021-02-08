@@ -32,7 +32,12 @@
 
 [diff]
     tool = meld
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
 [pull]
-	ff = only
+    ff = only
+
+[include]
+    path = config-local

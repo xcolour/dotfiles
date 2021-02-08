@@ -44,3 +44,6 @@ vim +BundleClean +qall
 if [ ! -e config/zsh/zshrc-local ]; then
     cp zshrc-local config/zsh/zshrc-local
 fi
+if [ ! -e config/git/config-local ]; then
+    cp gitconfig-local config/git/config-local
+fi
