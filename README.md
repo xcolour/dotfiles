@@ -7,6 +7,7 @@ spec](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.ht
 as much as possible.
 
 The script does the following:
+
  * Clear out `$PWD/dotfiles-backup/`.
  * Symlink everything under `config` into `$XDG_CONFIG_HOME`. Moves everything
    that already exists to `$PWD/dotfiles-backup/` first.
