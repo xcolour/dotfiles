@@ -10,7 +10,7 @@ xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
 xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
 xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
-# deploy
+# deploy to XDG dirs
 mkdir -p "${xcache}/zsh"
 mkdir -p "${xdata}/zsh"
 cd config
@@ -24,13 +24,16 @@ do
 done
 cd ..
 
-for f in vimrc zshenv
+# deploy to home
+cd home
+for f in *
 do
     if [ -e ~/.${f} ]; then
-        mv ~/.${f} dotfiles-backup/${f}
+        mv ~/.${f} ../dotfiles-backup/${f}
     fi
     ln -sf "$(pwd)/${f}" ~/.${f}
 done
+cd ..
 
 if [ ! -d ~/.vim/bundle/vundle ]; then
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -42,8 +45,8 @@ vim +BundleInstall +qall
 vim +BundleClean +qall
 
 if [ ! -e config/zsh/local.zsh ]; then
-    cp local.zsh config/zsh/local.zsh
+    cp local/local.zsh config/zsh/local.zsh
 fi
 if [ ! -e config/git/config-local ]; then
-    cp gitconfig-local config/git/config-local
+    cp local/gitconfig-local config/git/config-local
 fi
