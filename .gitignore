@@ -1,4 +1,4 @@
 vim/
 dotfiles-backup
-config/zsh/zshrc-local
+config/zsh/local.zsh
 config/git/config-local
