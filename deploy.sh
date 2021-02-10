@@ -2,6 +2,7 @@
 
 set -e
 
+# clean out old backups
 rm -rf dotfiles-backup
 mkdir -p dotfiles-backup
 
@@ -35,6 +36,7 @@ do
 done
 cd ..
 
+# install vundle for vim
 if [ ! -d ~/.vim/bundle/vundle ]; then
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     cd ~/.vim/bundle/vundle
@@ -44,6 +46,7 @@ fi
 vim +BundleInstall +qall
 vim +BundleClean +qall
 
+# create local files
 if [ ! -e config/zsh/00-local.zsh ]; then
     cp local/local.zsh config/zsh/00-local.zsh
 fi
