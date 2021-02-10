@@ -1,3 +1,6 @@
+export EDITOR=vim
+export LANG=en_US.UTF-8
+
 # get sbin on the path
 #export PATH="/usr/sbin:/sbin:$PATH"
 
@@ -14,6 +17,9 @@
 
 # Java
 #export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+# User bin
+#export PATH="$HOME/bin:$PATH"
 
 # start the ssh agent on login and stop on logout
 #eval `ssh-agent -s`
