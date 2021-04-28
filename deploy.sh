@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euv pipefail
 
 # clean out old backups
 rm -rf dotfiles-backup
@@ -29,10 +29,10 @@ cd ..
 cd home
 for f in *
 do
-    if [ -e ~/.${f} ]; then
-        mv ~/.${f} ../dotfiles-backup/${f}
+    if [ -e "$HOME/.${f}" ]; then
+        mv "$HOME/.${f}" "../dotfiles-backup/${f}"
     fi
-    ln -sf "$(pwd)/${f}" ~/.${f}
+    ln -sf "$(pwd)/${f}" "$HOME/.${f}"
 done
 cd ..
 
