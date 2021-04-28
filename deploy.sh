@@ -47,9 +47,14 @@ vim +BundleInstall +qall
 vim +BundleClean +qall
 
 # create local files
-if [ ! -e config/zsh/00-local.zsh ]; then
+if [ ! -e ~/.config/zsh/00-local.zsh ]; then
     cp local/local.zsh config/zsh/00-local.zsh
 fi
-if [ ! -e config/git/config-local ]; then
+if [ ! -e ~/.config/git/config-local ]; then
     cp local/gitconfig-local config/git/config-local
+fi
+if [ ! -e ~/.local/share/fonts/sourcecodepro-nerd ]; then
+    mkdir -p ~/.local/share/fonts/sourcecodepro-nerd
+    unzip local/SourceCodePro.zip -d ~/.local/share/fonts/sourcecodepro-nerd
+    echo "Run \'fc-cache -v\' to rebuild your font cache"
 fi
