@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euv pipefail
+set -euo pipefail
 
 # clean out old backups
 rm -rf dotfiles-backup
