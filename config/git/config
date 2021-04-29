@@ -14,7 +14,7 @@
     whitespace = trailing-space,space-before-tab,cr-at-eol
     editor = vim
     autocrlf = input
-    excludesfile = /Users/matt/.gitignore
+    excludesfile = ~/.config/git/ignore
     pager = less -+$LESS -RSX
 
 [push]
