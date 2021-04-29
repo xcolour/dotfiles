@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+set -o allexport
+# shellcheck source=../local/duplicity-config
+source ~/.config/duplicity/config
+set +o allexport
+
+source_directory=~
+excludes=~/.config/duplicity/excludes
+target_url=b2://"$B2_KEY_ID"@"$B2_BUCKET"
+
+# take a new full backup every month, incremental otherwise
+duplicity --full-if-older-than 1M --exclude-filelist "$excludes" "$source_directory" "$target_url"
+
+# keep 12 months of full backups
+duplicity remove-all-but-n-full 12 --force "$target_url"
+
+# keep 3 months of incremental backups
+duplicity remove-all-inc-of-but-n-full 3 --force "$target_url"
+
+# cleanup
+duplicity cleanup --force "$target_url"
+
+# show collection status
+duplicity collection-status "$target_url"
