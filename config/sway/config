@@ -22,6 +22,8 @@ set $term alacritty
 set $menu wofi --show=drun | xargs swaymsg exec --
 
 font SauceCodePro Nerd Font 10
+default_border pixel 2
+smart_borders on
 
 ### Output configuration
 #
@@ -219,6 +221,34 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+#
+# Theme Colors
+#
+
+#SOLARIZED HEX     16/8 TERMCOL
+#--------- ------- ---- -------
+#base03    #002b36  8/4 brblack
+#base02    #073642  0/4 black
+#base01    #586e75 10/7 brgreen
+#base00    #657b83 11/7 bryellow
+#base0     #839496 12/6 brblue
+#base1     #93a1a1 14/4 brcyan
+#base2     #eee8d5  7/7 white
+#base3     #fdf6e3 15/7 brwhite
+#yellow    #b58900  3/3 yellow
+#orange    #cb4b16  9/3 brred
+#red       #dc322f  1/1 red
+#magenta   #d33682  5/5 magenta
+#violet    #6c71c4 13/5 brmagenta
+#blue      #268bd2  4/4 blue
+#cyan      #2aa198  6/6 cyan
+#green     #859900  2/2 green
+
+#                       border  bg      text    ind     child
+client.focused          #2aa198 #073642 #93a1a1 #268bd2 #2aa198
+client.focused_inactive #93a1a1 #002b36 #586e75 #073642 #eee8d5
+client.unfocused        #93a1a1 #002b36 #586e75 #073642 #eee8d5
 
 #
 # Status Bar:
