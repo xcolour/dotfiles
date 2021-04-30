@@ -1,0 +1,38 @@
+window {
+    background: #eee8d5;
+    color: #657b83;
+    font-family: SauceCodePro Nerd Font;
+    font-size: 10pt;
+}
+
+#input {
+    padding: 2px;
+    margin: 5px;
+    border: 0;
+    border-radius: 0;
+    color: #657b83;
+    background: #fdf6e3;
+}
+
+#input:active {
+    border: 0;
+}
+
+#inner-box {
+}
+
+#outer-box {
+}
+
+#scroll {
+    padding: 2px;
+    margin: 5px;
+}
+
+#text {
+}
+
+#entry:selected{
+    background: #93a1a1;
+    color: #eee8d5;
+}
