@@ -49,15 +49,10 @@ do
 done
 cd ..
 
-# install vundle for vim
-if [ ! -d ~/.vim/bundle/vundle ]; then
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    cd ~/.vim/bundle/vundle
-    git pull
-    cd -
-fi
-vim +BundleInstall +qall
-vim +BundleClean +qall
+# install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
 
 # create local files
 if [ ! -e ~/.config/zsh/00-local.zsh ]; then
