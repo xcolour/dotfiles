@@ -1,27 +1,23 @@
 "
-" vundle
+" vim-plug
 "
 
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'jnwhiteh/vim-golang'
+Plug 'chase/vim-ansible-yaml'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-eunuch'
+Plug 'dense-analysis/ale'
 
-Bundle 'gmarik/vundle'
-
-Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-eunuch'
-Plugin 'dense-analysis/ale'
+call plug#end()
 
 "
 " behavior
