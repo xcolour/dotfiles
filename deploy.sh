@@ -11,7 +11,7 @@ xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
 xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
 xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
-userbin="$HOME/bin"
+userbin="$HOME/.local/bin"
 
 # deploy to XDG dirs
 mkdir -p "${xcache}/zsh"
@@ -39,6 +39,7 @@ done
 cd ..
 
 # deploy to user binaries
+mkdir -p "$userbin"
 cd bin
 for f in *
 do
