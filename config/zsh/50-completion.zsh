@@ -1,7 +1,7 @@
 # initialize the completion system
 autoload -U compinit
 zmodload zsh/complist
-compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
 
 # complete only after the second consecutive tab
 setopt auto_menu
@@ -34,6 +34,7 @@ zstyle ':completion:*:hosts' hosts $hosts
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompcache"
 
 # Don't complete uninteresting users
 zstyle ':completion:*:*:*:users' ignored-patterns \
