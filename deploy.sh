@@ -67,9 +67,11 @@ if [ ! -e ~/.local/share/fonts/sourcecodepro-nerd ]; then
     unzip local/SourceCodePro.zip -d ~/.local/share/fonts/sourcecodepro-nerd
     echo "Run \'fc-cache -v\' to rebuild your font cache"
 fi
-if [ ! -e ~/.config/duplicity/config ]; then
-    cp local/duplicity-config ~/.config/duplicity/config
+dconfig="$xconfig/duplicity"
+mkdir -p "$dconfig"
+if [ ! -e "$dconfig/config" ]; then
+    cp local/duplicity-config "$dconfig/config"
 fi
-if [ ! -e ~/.config/duplicity/excludes ]; then
-    cp local/duplicity-excludes ~/.config/duplicity/excludes
+if [ ! -e "$dconfig/excludes" ]; then
+    cp local/duplicity-excludes "$dconfig/excludes"
 fi
