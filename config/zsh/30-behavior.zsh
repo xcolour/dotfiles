@@ -19,6 +19,10 @@ setopt hist_verify # load hist into command buffer rather than exec immediately
 #
 # term support
 
+# make sure $TERM is installed
+# if not, fall back on xterm-256color
+infocmp "$TERM" > /dev/null 2>&1 || export TERM=xterm-256color
+
 # set term title appropriately based on term type
 # user@host:current_dir (current_command)
 case "$TERM" in
