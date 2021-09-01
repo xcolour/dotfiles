@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -28,7 +28,7 @@ smart_borders on
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/i3_cheatsheet.png center #FFFFFF
+output * background ~/Pictures/marfa.jpg fill
 #
 # Example configuration:
 #
@@ -97,6 +97,8 @@ output * bg ~/Pictures/i3_cheatsheet.png center #FFFFFF
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+i exec swaylock
+    bindsym $mod+Shift+comma exec 1password --toggle
 
     # Media keys
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -268,5 +270,14 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+#
+# Apps
+#
+
+for_window [class="1Password"] floating enable
+for_window [app_id="firefox"] inhibit_idle fullscreen
+assign [class="Tauon Music Box"] workspace number 3
+assign [class="Joplin"] workspace number 4
 
 include /etc/sway/config.d/*

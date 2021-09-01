@@ -26,7 +26,7 @@ infocmp "$TERM" > /dev/null 2>&1 || export TERM=xterm-256color
 # set term title appropriately based on term type
 # user@host:current_dir (current_command)
 case "$TERM" in
-  xterm*|rxvt*|screen*|alacritty*)
+  xterm*|rxvt*|screen*|alacritty*|foot)
     term_preexec () {
         printf '\e]0;%s (%s)\a' ${(%):-'%n@%m:%~'} "$1"
     }
