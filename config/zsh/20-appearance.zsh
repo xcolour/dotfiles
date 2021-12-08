@@ -2,8 +2,11 @@
 # colorize shell programs
 
 if ls --color -d . &>/dev/null 2>&1; then
-    alias ls='ls --color=tty'
+    alias ls='ls --color=auto'
     eval `dircolors ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors.conf`
+elif (( $+commands[gls] )); then
+    alias ls='gls --color=auto'
+    eval `gdircolors ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors.conf`
 else
     alias ls='ls -G'
     export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
