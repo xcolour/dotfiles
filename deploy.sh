@@ -13,6 +13,8 @@ xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 userbin="$HOME/.local/bin"
 
+mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin"
+
 # deploy to XDG dirs
 mkdir -p "${xcache}/zsh"
 mkdir -p "${xdata}/zsh"
@@ -64,7 +66,12 @@ if [ ! -e ~/.config/git/config-local ]; then
 fi
 if [ ! -e ~/.local/share/fonts/sourcecodepro-nerd ]; then
     mkdir -p ~/.local/share/fonts/sourcecodepro-nerd
-    unzip local/SourceCodePro.zip -d ~/.local/share/fonts/sourcecodepro-nerd
+    unzip local/SourceCodePro.zip \
+        "Sauce Code Pro Nerd Font Complete.ttf" \
+        "Sauce Code Pro Bold Nerd Font Complete.ttf" \
+        "Sauce Code Pro Italic Nerd Font Complete.ttf" \
+        "Sauce Code Pro Bold Italic Nerd Font Complete.ttf" \
+        -d ~/.local/share/fonts/sourcecodepro-nerd
     echo "Run \'fc-cache -v\' to rebuild your font cache"
 fi
 dconfig="$xconfig/duplicity"
