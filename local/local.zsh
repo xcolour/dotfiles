@@ -1,25 +1,22 @@
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
-# get sbin on the path
-#export PATH="/usr/sbin:/sbin:$PATH"
+# macports
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#export MANPATH=/opt/local/share/man:$MANPATH
+#export DISPLAY=:0
+#export PATH="/opt/local/libexec/gnubin:$PATH"
+#fpath=(/opt/local/share/zsh/site-functions $fpath)
 
-# move homebrew stuff to the beginning of the search path
-#export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-#export MANPATH="/usr/local/man:$MANPATH"
-#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-#export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-#export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-#export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-#export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
-#export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-#export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
+# asdf and completions
+#. $HOME/.asdf/asdf.sh
+#fpath=(${ASDF_DIR}/completions $fpath)
 
 # Java
 #export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
-# User bin
-#export PATH="$HOME/bin:$PATH"
+# local bin
+#export PATH=~/.local/bin:$PATH
 
 # start the ssh agent on login and stop on logout
 #eval `ssh-agent -s`
