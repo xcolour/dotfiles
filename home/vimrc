@@ -4,7 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-dirvish'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
@@ -113,9 +113,8 @@ nnoremap <c-l> <c-w>l
 "nnoremap <??> 10<c-e> 10j
 "nnoremap <??> 10<c-y> 10k
 
-" NERDTree
-nnoremap <leader>e :NERDTreeToggle<Enter>
-let NERDTreeMapActivateNode='<Space>'
+" dirvish
+nnoremap <leader>e :Dirvish<Enter>
 
 " bufexplore
 nnoremap <leader>fe :BufExplorer<Enter>
