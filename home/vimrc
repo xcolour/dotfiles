@@ -148,12 +148,16 @@ syntax enable
 highlight clear SignColumn
 hi! link SignColumn Background
 
-" Highlight non-ascii characters
-" Run this late to override theme
+" Highlight non-ascii characters as the theme highlights errors
+hi clear nonascii
+hi link nonascii Error
 if has("autocmd")
-  highlight nonascii guibg=Red ctermbg=1 term=standout
   au BufReadPost * syntax match nonascii /[^\d0-\d127]/
 endif
+
+" highlight trailing space and tab as the theme highlights errors
+hi clear SpecialKey
+hi link SpecialKey Error
 
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep="\uE0B4"
