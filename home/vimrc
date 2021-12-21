@@ -4,12 +4,10 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
 Plug 'justinmk/vim-dirvish'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'jnwhiteh/vim-golang'
-Plug 'chase/vim-ansible-yaml'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -24,28 +22,21 @@ call plug#end()
 "
 
 set nocompatible  " use vim, not vi settings
-set wildmenu      " command line tab completion menu
 set wildignore=*.pyc,.git " ignore from autocomplete
-set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
 set ignorecase    " ignore case in search
 set smartcase     " respect case in search if uppercase is used
 set nowrap        " do not wrap lines
-set backspace=indent,eol,start " backspace over all stuff
 set vb t_vb=      " no beeping
-set laststatus=2  " always show the status line
 
 "
 " formatting
 "
 
-set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set smarttab
 set shiftround
 set listchars=tab:»·,trail:·
 set list
@@ -55,8 +46,6 @@ set list
 "
 
 if has("autocmd")
-  filetype plugin indent on
-
   au!
   au FileType text                  setlocal tw=80 ts=2 sw=2 sts=2
   au FileType markdown              setlocal tw=80 ts=2 sw=2 sts=2
@@ -110,8 +99,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-"nnoremap <??> 10<c-e> 10j
-"nnoremap <??> 10<c-y> 10k
 
 " dirvish
 nnoremap <leader>e :Dirvish<Enter>
@@ -151,11 +138,11 @@ if ($TERM == 'xterm-kitty')
   let &t_ut=''
 endif
 
-syntax on
 set background=light
 silent! colo tempus_dawn
 let g:airline_theme='papercolor'
 set hlsearch
+syntax enable
 
 " don't mess up gutter highlight with gitgutter
 highlight clear SignColumn
