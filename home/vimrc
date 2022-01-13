@@ -12,10 +12,18 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-eunuch'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 call plug#end()
+
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_auto_popup = 0
 
 "
 " behavior
@@ -111,7 +119,6 @@ nnoremap <leader>fv :BufExplorerVerticalSplit<Enter>
 " ctrlp
 let g:ctrlp_map ='<leader>a'
 
-
 "
 " visual
 "
@@ -164,7 +171,7 @@ let g:airline_left_sep="\uE0B4"
 let g:airline_right_sep = "\uE0B6"
 
 " set a font for gvim/macvim
-set guifont=SauceCodeProNerdFontComplete-Regular:h14
+set guifont=SauceCodeProNerdFontComplete-Medium:h14
 
 "
 " local additions
