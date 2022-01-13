@@ -67,9 +67,9 @@ fi
 if [ ! -e ~/.local/share/fonts/sourcecodepro-nerd ]; then
     mkdir -p ~/.local/share/fonts/sourcecodepro-nerd
     unzip local/SourceCodePro.zip \
-        "Sauce Code Pro Nerd Font Complete.ttf" \
+        "Sauce Code Pro Medium Nerd Font Complete.ttf" \
         "Sauce Code Pro Bold Nerd Font Complete.ttf" \
-        "Sauce Code Pro Italic Nerd Font Complete.ttf" \
+        "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
         "Sauce Code Pro Bold Italic Nerd Font Complete.ttf" \
         -d ~/.local/share/fonts/sourcecodepro-nerd
     echo "Run \'fc-cache -v\' to rebuild your font cache"
