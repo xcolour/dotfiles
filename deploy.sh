@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-# clean out old backups
-rm -rf dotfiles-backup
 mkdir -p dotfiles-backup
 
 # XDG layout
@@ -15,17 +13,24 @@ userbin="$HOME/.local/bin"
 
 mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin"
 
+function link {
+    src="$1"
+    dest="$2"
+    if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+        mv "$dest" "../dotfiles-backup/."
+    fi
+    if [ ! -e "$dest" ]; then
+        ln -sf "$src" "$dest"
+    fi
+}
+
 # deploy to XDG dirs
 mkdir -p "${xcache}/zsh"
 mkdir -p "${xdata}/zsh"
 cd config
 for d in *
 do
-    dest="${xconfig}/$d"
-    if [ -e "$dest" ]; then
-        mv "$dest" "../dotfiles-backup/$d"
-    fi
-    ln -sf "$(pwd)/$d" "$dest"
+    link "$(pwd)/$d" "${xconfig}/$d"
 done
 cd ..
 
@@ -33,10 +38,7 @@ cd ..
 cd home
 for f in *
 do
-    if [ -e "$HOME/.${f}" ]; then
-        mv "$HOME/.${f}" "../dotfiles-backup/${f}"
-    fi
-    ln -sf "$(pwd)/${f}" "$HOME/.${f}"
+    link "$(pwd)/${f}" "$HOME/.${f}"
 done
 cd ..
 
@@ -45,34 +47,24 @@ mkdir -p "$userbin"
 cd bin
 for f in *
 do
-    if [ -e "$userbin/${f}" ]; then
-        mv "$userbin/${f}" "../dotfiles-backup/${f}"
-    fi
-    ln -sf "$(pwd)/${f}" "$userbin/${f}"
+    link "$(pwd)/${f}" "$userbin/${f}"
 done
 cd ..
 
 # install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
+if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+    mkdir -p "$HOME/.vim/autoload"
+    curl -o "$HOME/.vim/autoload/plug.vim" \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim +PlugInstall +qall
+fi
 
 # create local files
-if [ ! -e ~/.config/zsh/00-local.zsh ]; then
+if [ ! -e "$HOME/.config/zsh/00-local.zsh" ]; then
     cp local/local.zsh config/zsh/00-local.zsh
 fi
-if [ ! -e ~/.config/git/config-local ]; then
+if [ ! -e "$HOME/.config/git/config-local" ]; then
     cp local/gitconfig-local config/git/config-local
-fi
-if [ ! -e ~/.local/share/fonts/sourcecodepro-nerd ]; then
-    mkdir -p ~/.local/share/fonts/sourcecodepro-nerd
-    unzip local/SourceCodePro.zip \
-        "Sauce Code Pro Medium Nerd Font Complete.ttf" \
-        "Sauce Code Pro Bold Nerd Font Complete.ttf" \
-        "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
-        "Sauce Code Pro Bold Italic Nerd Font Complete.ttf" \
-        -d ~/.local/share/fonts/sourcecodepro-nerd
-    echo "Run \'fc-cache -v\' to rebuild your font cache"
 fi
 dconfig="$xconfig/duplicity"
 mkdir -p "$dconfig"
@@ -81,4 +73,35 @@ if [ ! -e "$dconfig/config" ]; then
 fi
 if [ ! -e "$dconfig/excludes" ]; then
     cp local/duplicity-excludes "$dconfig/excludes"
+fi
+
+# download nerdfonts
+new_font=0
+function get_font {
+    local font_name="$1"
+    local font_url="$2"
+    shift 2
+    local font_dir="$HOME/.local/share/fonts/$font_name"
+    mkdir -p "$font_dir"
+    if [ ! -d "$font_dir" ] || [ -z "$(ls -A "$font_dir" 2> /dev/null)" ]; then
+        curl -o "$font_dir/font.zip" "$font_url"
+        unzip "$font_dir/font.zip" "$@" -d "$font_dir"
+        rm "$font_dir/font.zip"
+        new_font=1
+    fi
+}
+get_font sourcecodepro-nerd \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip \
+    "Sauce Code Pro Medium Nerd Font Complete.ttf" \
+    "Sauce Code Pro Bold Nerd Font Complete.ttf" \
+    "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
+    "Sauce Code Pro Bold Italic Nerd Font Complete.ttf"
+get_font jetbrainsmono-nerd \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip \
+    "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf"
+if [ "$new_font" = "1" ]; then
+    echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
 fi
