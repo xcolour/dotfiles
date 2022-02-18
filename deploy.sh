@@ -1,8 +1,24 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
 mkdir -p dotfiles-backup
+
+if command -v unzip > /dev/null; then
+    UNZIPCMD="unzip"
+fi
+if command -v vim > /dev/null; then
+    VIMCMD="vim"
+fi
+if command -v wget > /dev/null; then
+    DLCMD="wget -O"
+elif command -v curl > /dev/null; then
+    DLCMD="curl -o"
+fi
+if [ -z "$UNZIPCMD" ] || [ -z "$VIMCMD" ] || [ -z "$DLCMD" ]; then
+    echo "requires 'unzip', 'vim', and either 'wget' or 'curl'"
+    exit 1
+fi
 
 # XDG layout
 xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -54,9 +70,9 @@ cd ..
 # install vim-plug
 if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
     mkdir -p "$HOME/.vim/autoload"
-    curl -o "$HOME/.vim/autoload/plug.vim" \
+    $DLCMD "$HOME/.vim/autoload/plug.vim" \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim +PlugInstall +qall
+    $VIMCMD +PlugInstall +qall
 fi
 
 # create local files
@@ -84,8 +100,8 @@ function get_font {
     local font_dir="$HOME/.local/share/fonts/$font_name"
     mkdir -p "$font_dir"
     if [ ! -d "$font_dir" ] || [ -z "$(ls -A "$font_dir" 2> /dev/null)" ]; then
-        curl -o "$font_dir/font.zip" "$font_url"
-        unzip "$font_dir/font.zip" "$@" -d "$font_dir"
+        $DLCMD "$font_dir/font.zip" "$font_url"
+        $UNZIPCMD "$font_dir/font.zip" "$@" -d "$font_dir"
         rm "$font_dir/font.zip"
         new_font=1
     fi
