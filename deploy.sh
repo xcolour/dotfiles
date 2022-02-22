@@ -13,7 +13,7 @@ fi
 if command -v wget > /dev/null; then
     DLCMD="wget -O"
 elif command -v curl > /dev/null; then
-    DLCMD="curl -o"
+    DLCMD="curl -Lo"
 fi
 if [ -z "$UNZIPCMD" ] || [ -z "$VIMCMD" ] || [ -z "$DLCMD" ]; then
     echo "requires 'unzip', 'vim', and either 'wget' or 'curl'"
