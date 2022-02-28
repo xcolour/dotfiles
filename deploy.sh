@@ -92,32 +92,34 @@ if [ ! -e "$dconfig/excludes" ]; then
 fi
 
 # download nerdfonts
-new_font=0
-function get_font {
-    local font_name="$1"
-    local font_url="$2"
-    shift 2
-    local font_dir="$HOME/.local/share/fonts/$font_name"
-    mkdir -p "$font_dir"
-    if [ ! -d "$font_dir" ] || [ -z "$(ls -A "$font_dir" 2> /dev/null)" ]; then
-        $DLCMD "$font_dir/font.zip" "$font_url"
-        $UNZIPCMD "$font_dir/font.zip" "$@" -d "$font_dir"
-        rm "$font_dir/font.zip"
-        new_font=1
+if command -v fc-cache > /dev/null; then
+    new_font=0
+    function get_font {
+        local font_name="$1"
+        local font_url="$2"
+        shift 2
+        local font_dir="$HOME/.local/share/fonts/$font_name"
+        mkdir -p "$font_dir"
+        if [ ! -d "$font_dir" ] || [ -z "$(ls -A "$font_dir" 2> /dev/null)" ]; then
+            $DLCMD "$font_dir/font.zip" "$font_url"
+            $UNZIPCMD "$font_dir/font.zip" "$@" -d "$font_dir"
+            rm "$font_dir/font.zip"
+            new_font=1
+        fi
+    }
+    get_font sourcecodepro-nerd \
+        https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip \
+        "Sauce Code Pro Medium Nerd Font Complete.ttf" \
+        "Sauce Code Pro Bold Nerd Font Complete.ttf" \
+        "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
+        "Sauce Code Pro Bold Italic Nerd Font Complete.ttf"
+    get_font jetbrainsmono-nerd \
+        https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip \
+        "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
+        "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
+        "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
+        "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf"
+    if [ "$new_font" = "1" ]; then
+        echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
     fi
-}
-get_font sourcecodepro-nerd \
-    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip \
-    "Sauce Code Pro Medium Nerd Font Complete.ttf" \
-    "Sauce Code Pro Bold Nerd Font Complete.ttf" \
-    "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
-    "Sauce Code Pro Bold Italic Nerd Font Complete.ttf"
-get_font jetbrainsmono-nerd \
-    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip \
-    "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf"
-if [ "$new_font" = "1" ]; then
-    echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
 fi
