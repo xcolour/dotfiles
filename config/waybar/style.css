@@ -1,33 +1,15 @@
-/*
-$base03:    #002b36;
-$base02:    #073642;
-$base01:    #586e75;
-$base00:    #657b83;
-$base0:     #839496;
-$base1:     #93a1a1;
-$base2:     #eee8d5;
-$base3:     #fdf6e3;
-$yellow:    #b58900;
-$orange:    #cb4b16;
-$red:       #dc322f;
-$magenta:   #d33682;
-$violet:    #6c71c4;
-$blue:      #268bd2;
-$cyan:      #2aa198;
-$green:     #859900;
-*/
-
 * {
-    font-family: SauceCodePro Nerd Font;
-    font-size: 12pt;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 11pt;
 }
 
 window#waybar {
-    background: #eee8d5;
-    color: #657b83;
+    background: #eff0f2;
+    color: #4a4b4e;
 }
 
 .topbar {
+    border-bottom: 1px solid #e2e4e1;
 }
 
 
@@ -36,49 +18,22 @@ window#waybar {
 #network,
 #pulseaudio,
 #battery,
-#clock {
+#clock,
+#temperature {
     padding: 2px 10px;
     margin: 0;
-}
-
-
-#mode,
-#network,
-#pulseaudio,
-#battery {
-    background: #93a1a1;
-    color: #eee8d5;
-}
-
-#clock {
-    background: #657b83;
-    color: #eee8d5;
 }
 
 #workspaces button,
 #workspaces button:hover,
 #workspaces button.focused,
 #workspaces button.urgent {
-    color: #93a1a1;
     box-shadow: none;
     border-radius: 0;
     padding: 0 5px;
-}
-
-#workspaces button {
-    background: #93a1a1;
-    color: #eee8d5;
-}
-
-#workspaces button:hover {
-    background: #93a1a1;
-    color: #eee8d5;
-    box-shadow: none;
     font-weight: normal;
 }
 
 #workspaces button.focused {
-    background: #2aa198;
-    color: #eee8d5;
-    box-shadow: none;
+    background: #e2e4e1;
 }

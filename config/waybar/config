@@ -6,7 +6,7 @@
         "height": 0,
         "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
         "modules-center": [],
-        "modules-right": ["tray", "network#wifi", "pulseaudio", "battery#bat1", "clock#local"],
+        "modules-right": ["tray", "network#wifi", "pulseaudio", "battery#bat1", "temperature", "clock#local"],
         "idle_inhibitor": {
             "format": "{icon}",
             "format-icons": {

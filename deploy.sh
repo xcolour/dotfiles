@@ -115,10 +115,14 @@ if command -v fc-cache > /dev/null; then
         "Sauce Code Pro Bold Italic Nerd Font Complete.ttf"
     get_font jetbrainsmono-nerd \
         https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip \
-        "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
-        "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
-        "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
-        "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf"
+    "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf" \
+    "JetBrains Mono Regular Nerd Font Complete.ttf" \
+    "JetBrains Mono Italic Nerd Font Complete.ttf" \
+    "JetBrains Mono Bold Nerd Font Complete.ttf" \
+    "JetBrains Mono Bold Italic Nerd Font Complete.ttf"
     if [ "$new_font" = "1" ]; then
         echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
     fi

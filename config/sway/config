@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -279,5 +279,11 @@ for_window [class="1Password"] floating enable
 for_window [app_id="firefox"] inhibit_idle fullscreen
 assign [class="Tauon Music Box"] workspace number 3
 assign [class="Joplin"] workspace number 4
+
+#
+# Notifications
+#
+
+#exec mako
 
 include /etc/sway/config.d/*
