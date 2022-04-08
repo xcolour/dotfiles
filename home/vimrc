@@ -142,7 +142,7 @@ endif
 
 set background=light
 silent! colo tempus_dawn
-let g:airline_theme='papercolor'
+let g:airline_theme='tempus_dawn'
 set hlsearch
 syntax enable
 
@@ -164,6 +164,7 @@ hi link SpecialKey Error
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep="\uE0B4"
 let g:airline_right_sep = "\uE0B6"
+let g:airline_skip_empty_sections = 1
 
 " set a font for gvim/macvim
 set guifont=SauceCodeProNerdFontComplete-Medium:h14

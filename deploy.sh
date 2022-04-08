@@ -67,13 +67,22 @@ do
 done
 cd ..
 
+autoload="$HOME/.vim/autoload"
+mkdir -p "$autoload"
 # install vim-plug
 if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
-    mkdir -p "$HOME/.vim/autoload"
     $DLCMD "$HOME/.vim/autoload/plug.vim" \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     $VIMCMD +PlugInstall +qall
 fi
+
+# deploy custom scripts to vim autoload
+cd vim
+for f in *
+do
+    link "$(pwd)/$f" "$autoload/$f"
+done
+cd ..
 
 # create local files
 if [ ! -e "$HOME/.config/zsh/00-local.zsh" ]; then
