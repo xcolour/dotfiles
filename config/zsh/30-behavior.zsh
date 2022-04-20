@@ -37,21 +37,6 @@ case "$TERM" in
 esac
 
 #
-# virtualenv
-
-if [ -e /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
-    vew=/usr/local/bin/virtualenvwrapper_lazy.sh
-elif [ -e /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh ]; then
-    vew=/usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-fi
-
-if [ -n "$vew" ]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=true
-    export WORKON_HOME=~/.virtualenv/envs
-    source $vew
-fi
-
-#
 # draw a horizontal separator
 
 function hr {
