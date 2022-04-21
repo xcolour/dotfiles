@@ -2,8 +2,6 @@
 
 set -eo pipefail
 
-mkdir -p dotfiles-backup
-
 if command -v unzip > /dev/null; then
     UNZIPCMD="unzip"
 fi
@@ -20,6 +18,8 @@ if [ -z "$UNZIPCMD" ] || [ -z "$VIMCMD" ] || [ -z "$DLCMD" ]; then
     exit 1
 fi
 
+set -u
+
 # XDG layout
 xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
 xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
@@ -33,6 +33,7 @@ function link {
     src="$1"
     dest="$2"
     if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+        mkdir -p "../dotfiles-backup"
         mv "$dest" "../dotfiles-backup/."
     fi
     if [ ! -e "$dest" ]; then
