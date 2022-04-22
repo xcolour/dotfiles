@@ -33,9 +33,9 @@ set vb t_vb=      " no beeping
 " formatting
 "
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set shiftround
 set listchars=tab:»·,trail:·
@@ -47,36 +47,13 @@ set list
 
 if has("autocmd")
   au!
-  au FileType text                  setlocal tw=80 ts=2 sw=2 sts=2
-  au FileType markdown              setlocal tw=80 ts=2 sw=2 sts=2
-  au FileType html                  setlocal ts=2 sw=2 sts=2
-  au FileType xhtml                 setlocal ts=2 sw=2 sts=2
-  au FileType ruby                  setlocal ts=2 sw=2 sts=2
-  au FileType eruby                 setlocal ts=2 sw=2 sts=2
-  au FileType htmldjango            setlocal ts=2 sw=2 sts=2
-  au FileType coffee                setlocal ts=2 sw=2 sts=2
-  au FileType php                   setlocal ts=2 sw=2 sts=2
 
-  " text files
-  au BufRead,BufNewFile *.txt       setlocal filetype=text
+  " plain text
+  au FileType text         setlocal tw=80
+  au FileType markdown     setlocal tw=80
 
-  " markdown
-  au BufRead,BufNewFile *.md        setlocal filetype=markdown
-
-  " html templates
-  au BufRead,BufNewFile *.mako      setlocal filetype=html
-  au BufRead,BufNewFile *.ftl       setlocal filetype=html
-  au BufRead,BufNewFile *.handlebars setlocal filetype=html ts=4 sts=4 sw=4
-
-  " css templates
-  au BufRead,BufNewFile *.less      setlocal filetype=css
-
-  " zsh configs and scripts
-  au BufRead,BufNewFile *.zsh-overrides setlocal filetype=zsh
-  au BufRead,BufNewFile *.zsh       setlocal filetype=zsh
-
-  " ruby files
-  au BufRead,BufNewFile *.cap       setlocal filetype=ruby
+  " python
+  au FileType python       setlocal ts=4 sw=4 sts=4
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -154,8 +131,14 @@ let g:airline_left_sep="\uE0B4"
 let g:airline_right_sep = "\uE0B6"
 let g:airline_skip_empty_sections = 1
 
-" set a font for gvim/macvim
-set guifont=SauceCodeProNerdFontComplete-Medium:h14
+" set a font for gvim and macvim
+if has("gui_running")
+    if has("gui_gtk2")
+        :set guifont=JetBrainsMono\ Nerd\ Font\ Complete\ 11
+    elseif has("gui_macvim")
+        :set guifont=JetBrainsMonoNerdFontCompleteM-Regular:h14
+    endif
+endif
 
 "
 " local additions
