@@ -131,15 +131,6 @@ let g:airline_left_sep="\uE0B4"
 let g:airline_right_sep = "\uE0B6"
 let g:airline_skip_empty_sections = 1
 
-" set a font for gvim and macvim
-if has("gui_running")
-    if has("gui_gtk2")
-        :set guifont=JetBrainsMono\ Nerd\ Font\ Complete\ 11
-    elseif has("gui_macvim")
-        :set guifont=JetBrainsMonoNerdFontCompleteM-Regular:h14
-    endif
-endif
-
 "
 " local additions
 "
