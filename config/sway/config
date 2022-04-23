@@ -1,9 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -21,15 +15,15 @@ set $term kitty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show=drun | xargs swaymsg exec --
 
-font SauceCodePro Nerd Font 10
-default_border pixel 2
+font JetBrainsMono Nerd Font Mono 9
+default_border pixel 1
 smart_borders on
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * background ~/Pictures/marfa.jpg fill
-#
+output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png fill
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -72,6 +66,17 @@ output * background ~/Pictures/marfa.jpg fill
         xkb_options ctrl:nocaps
     }
 
+### wob indicator
+
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | \
+    wob --border-color "#676364ff" \
+        --background-color "#dee2e0ff" \
+        --bar-color "#676364ff" \
+        --offset 0 \
+        --border 1 \
+        --padding 5
+
 ### Key bindings
 #
 # Basics:
@@ -101,15 +106,15 @@ output * background ~/Pictures/marfa.jpg fill
     bindsym $mod+Shift+comma exec 1password --toggle
 
     # Media keys
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec ~/.local/bin/setvol up > $WOBSOCK
+    bindsym XF86AudioLowerVolume exec ~/.local/bin/setvol down > $WOBSOCK
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-    bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
+    #bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    #bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    #bindsym XF86AudioPlay exec playerctl play-pause
+    #bindsym XF86AudioNext exec playerctl next
+    #bindsym XF86AudioPrev exec playerctl previous
 
 #
 # Moving around:
@@ -228,47 +233,17 @@ bindsym $mod+r mode "resize"
 # Theme Colors
 #
 
-#SOLARIZED HEX     16/8 TERMCOL
-#--------- ------- ---- -------
-#base03    #002b36  8/4 brblack
-#base02    #073642  0/4 black
-#base01    #586e75 10/7 brgreen
-#base00    #657b83 11/7 bryellow
-#base0     #839496 12/6 brblue
-#base1     #93a1a1 14/4 brcyan
-#base2     #eee8d5  7/7 white
-#base3     #fdf6e3 15/7 brwhite
-#yellow    #b58900  3/3 yellow
-#orange    #cb4b16  9/3 brred
-#red       #dc322f  1/1 red
-#magenta   #d33682  5/5 magenta
-#violet    #6c71c4 13/5 brmagenta
-#blue      #268bd2  4/4 blue
-#cyan      #2aa198  6/6 cyan
-#green     #859900  2/2 green
-
-#                       border  bg      text    ind     child
-client.focused          #2aa198 #073642 #93a1a1 #268bd2 #2aa198
-client.focused_inactive #93a1a1 #002b36 #586e75 #073642 #eee8d5
-client.unfocused        #93a1a1 #002b36 #586e75 #073642 #eee8d5
+#                       border  bg      text    ind     c_border
+client.focused          #106e86 #dee2e0 #4a4b4e #a32a3a #106e86
+client.focused_inactive #dee2e0 #dee2e0 #4a4b4e #a32a3a #dee2e0
+client.unfocused        #dee2e0 #dee2e0 #4a4b4e #a32a3a #dee2e0
 
 #
-# Status Bar:
+# Status Bar: waybar
 #
-# Read `man 5 sway-bar` for more information about this section.
+
 bar {
-    position top
     swaybar_command waybar
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
 }
 
 #

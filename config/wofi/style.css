@@ -1,8 +1,9 @@
 window {
-    background: #eee8d5;
-    color: #657b83;
-    font-family: SauceCodePro Nerd Font;
+    background: #eff0f2;
+    color: #4a4b4e;
+    font-family: Noto Sans, JetBrainsMono Nerd Font;
     font-size: 10pt;
+    border: 1px solid #dee2e0;
 }
 
 #input {
@@ -10,8 +11,6 @@ window {
     margin: 5px;
     border: 0;
     border-radius: 0;
-    color: #657b83;
-    background: #fdf6e3;
 }
 
 #input:active {
@@ -30,9 +29,9 @@ window {
 }
 
 #text {
+    color: #4a4b4e;
 }
 
-#entry:selected{
-    background: #93a1a1;
-    color: #eee8d5;
+#entry:selected {
+    background: #dee2e0;
 }

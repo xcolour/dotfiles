@@ -4,16 +4,9 @@
         "layer": "bottom",
         "position": "top",
         "height": 0,
-        "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+        "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": [],
-        "modules-right": ["tray", "network#wifi", "pulseaudio", "battery#bat1", "temperature", "clock#local"],
-        "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-                "activated": "",
-                "deactivated": ""
-            }
-        },
+        "modules-right": ["tray", "network#wifi", "pulseaudio", "battery#bat1", "temperature", "idle_inhibitor", "clock#local"],
         "sway/workspaces": {
             "format": "{icon}",
             "format-icons": {
@@ -28,83 +21,39 @@
             "format": "{:%a %d %b %I:%M %p}",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
         },
-        "clock#utc": {
-            "interval": 1,
-            "format": "({:%H:%M %Z})",
-            "timezone": "UTC"
-        },
-        "cpu": {
-            "format": " {usage}%",
-            "tooltip": false
-        },
-        "disk": {
-            "format": " {}%",
-            "tooltip-format": "{used} / {total} used"
-        },
-        "memory": {
-            "format": " {}%",
-            "tooltip-format": "{used:0.1f}G / {total:0.1f}G used"
-        },
         "temperature": {
             "critical-threshold": 80,
             "format": "{icon} {temperatureC}°C",
             "format-icons": ["", "", "", "", ""]
         },
-        "backlight": {
-            "device": "intel_backlight",
-            "interval": 1,
-            "on-scroll-down": "brightlight -pd 1",
-            "on-scroll-up": "brightlight -pi 1",
-            "format": "{icon} {percent}%",
-            "format-icons": ["", "", ""]
-        },
         "battery#bat1": {
             "bat": "BAT0",
             "adapter": "AC",
-            "interval": 10,
+            "interval": 60,
             "states": {
-                "full": 100,
-                "good": 99,
-                "empty": 5
+                "5": 100,
+                "4": 80,
+                "3": 60,
+                "2": 40,
+                "1": 20,
+                "0": 5
             },
-            "format": "{icon}  {capacity}%",
-            "format-charging": " {capacity}%",
-            "format-plugged": " {capacity}%",
-            "format-empty": "",
-            "format-full": "",
-            "format-icons": ["", "", "", "", ""]
-        },
-        "network#disconnected": {
-            "tooltip-format": "No connection!",
-            "format-ethernet": "",
-            "format-wifi": "",
-            "format-linked": "",
-            "format-disconnected": "",
-            "on-click": "nm-connection-editor"
-        },
-        "network#ethernet": {
-            "interface": "enp*",
-            "format-ethernet": "",
-            "format-wifi": "",
-            "format-linked": "",
-            "format-disconnected": "",
-            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-            "on-click": "nm-connection-editor"
+            "format": "{icon} {capacity}%",
+            "format-charging-5": " {capacity}%",
+            "format-charging-4": " {capacity}%",
+            "format-charging-3": " {capacity}%",
+            "format-charging-2": " {capacity}%",
+            "format-charging-1": " {capacity}%",
+            "format-charging-0": " {capacity}%",
+            "format-icons": ["", "", "", "", "", ""]
         },
         "network#wifi": {
             "interface": "wlp*",
             "format-ethernet": "",
-            "format-wifi": " {signalStrength}%",
+            "format-wifi": "  {signalStrength}%",
             "format-linked": "",
             "format-disconnected": "",
             "tooltip-format": "{essid}\n{ifname}: {ipaddr}/{cidr}",
-            "on-click": "nm-connection-editor"
-        },
-        "network#vpn": {
-            "interface": "tun0",
-            "format": "",
-            "format-disconnected": "",
-            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
             "on-click": "nm-connection-editor"
         },
         "pulseaudio": {
@@ -121,6 +70,13 @@
                 "default": ["奄", "奔", "墳"]
             },
             "on-click": "pavucontrol"
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
         }
     }
 ]

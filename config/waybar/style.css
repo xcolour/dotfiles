@@ -1,39 +1,58 @@
 * {
-    font-family: JetBrainsMono Nerd Font;
+    border-radius: 0;
+    border: 0;
+    font-family: Noto Sans, JetBrainsMono Nerd Font;
     font-size: 11pt;
+    text-shadow: none;
 }
 
 window#waybar {
     background: #eff0f2;
     color: #4a4b4e;
+    border-bottom: 1px solid #dee2e0;
 }
 
-.topbar {
-    border-bottom: 1px solid #e2e4e1;
+tooltip {
+    background: alpha(#eff0f2, 0.95);
+    border: 1px solid #dee2e0;
+    border-radius: 5px;
 }
 
+tooltip label {
+    color: #4a4b4e;
+}
 
-#mode,
-#window,
-#network,
-#pulseaudio,
-#battery,
-#clock,
-#temperature {
+label {
     padding: 2px 10px;
     margin: 0;
 }
 
-#workspaces button,
-#workspaces button:hover,
-#workspaces button.focused,
-#workspaces button.urgent {
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0 5px;
+#workspaces label {
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 6px;
     font-weight: normal;
 }
 
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #eff0f2;
+}
+
 #workspaces button.focused {
-    background: #e2e4e1;
+    background: #dee2e0;
+}
+
+#idle_inhibitor {
+    margin: 0;
+    padding: 2px 12px 2px 6px;
+}
+
+#idle_inhibitor.activated {
+    color: #eff0f2;
+    background: #a32a3a;
+    text-shadow: 1px 1px 0 #ae4e2a;
 }
