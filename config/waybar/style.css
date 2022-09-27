@@ -56,3 +56,7 @@ label {
     background: #a32a3a;
     text-shadow: 1px 1px 0 #ae4e2a;
 }
+
+#custom-reboot {
+    color: #a32a3a;
+}

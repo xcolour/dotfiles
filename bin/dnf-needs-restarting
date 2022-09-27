@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -eo pipefail
+
+if command -v dnf > /dev/null; then
+    DNFCMD="dnf"
+fi
+if command -v jq > /dev/null; then
+    JQCMD="jq"
+fi
+if [ -z "$DNFCMD" ] || [ -z "$JQCMD" ]; then
+    echo "{\"tooltip\": \"requires 'jq' and 'dnf'\", \"text\": \"\"}"
+    exit 1
+fi
+
+set -u
+
+if ! output="$($DNFCMD needs-restarting -r)"; then
+  icon="勒"
+else
+  icon=""
+fi
+
+$JQCMD --unbuffered -n -c '{tooltip: $ARGS.positional[0], text: $ARGS.positional[1]}' --args "$output" "$icon"

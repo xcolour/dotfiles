@@ -6,7 +6,7 @@
         "height": 0,
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": [],
-        "modules-right": ["tray", "network#wifi", "pulseaudio", "battery#bat1", "temperature", "idle_inhibitor", "clock#local"],
+        "modules-right": ["tray", "custom/reboot", "network#wifi", "pulseaudio", "battery#bat1", "temperature", "idle_inhibitor", "clock#local"],
         "sway/workspaces": {
             "format": "{icon}",
             "format-icons": {
@@ -24,7 +24,8 @@
         "temperature": {
             "critical-threshold": 80,
             "format": "{icon} {temperatureC}°C",
-            "format-icons": ["", "", "", "", ""]
+            "format-icons": ["", "", "", "", ""],
+            "tooltip": false
         },
         "battery#bat1": {
             "bat": "BAT0",
@@ -76,7 +77,14 @@
             "format-icons": {
                 "activated": "",
                 "deactivated": ""
-            }
+            },
+            "tooltip": false
+        },
+        "custom/reboot": {
+            "format": "{}",
+            "exec": "~/.local/bin/dnf-needs-restarting",
+            "return-type": "json",
+            "interval": 60
         }
     }
 ]
