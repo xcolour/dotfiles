@@ -26,8 +26,9 @@ xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
 xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 userbin="$HOME/.local/bin"
+systemd="$xconfig/systemd/user"
 
-mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin"
+mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin" "$systemd"
 
 function link {
     src="$1"
@@ -59,12 +60,19 @@ do
 done
 cd ..
 
-# deploy to user binaries
-mkdir -p "$userbin"
+# deploy user executables
 cd bin
 for f in *
 do
     link "$(pwd)/${f}" "$userbin/${f}"
+done
+cd ..
+
+# deploy systemd user units
+cd systemd
+for f in *
+do
+    link "$(pwd)/${f}" "$systemd/${f}"
 done
 cd ..
 
