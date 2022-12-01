@@ -1,13 +1,16 @@
 #
 # colorize shell programs
 
-if ls --color -d . &>/dev/null 2>&1; then
+if ls -Z . &>/dev/null 2>&1; then
+    # gnu coreutils?
     alias ls='ls --color=auto'
     eval `dircolors ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors.conf`
 elif (( $+commands[gls] )); then
+    # prefixed gnu coreutils?
     alias ls='gls --color=auto'
     eval `gdircolors ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors.conf`
 else
+    # assume bsd ls
     alias ls='ls -G'
     export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
 fi
