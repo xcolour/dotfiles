@@ -20,6 +20,8 @@ fi
 
 set -u
 
+uname=$(uname | tr '[:upper:]' '[:lower:]')
+
 # XDG layout
 xcache="${XDG_CACHE_HOME:-${HOME}/.cache}"
 xdata="${XDG_DATA_HOME:-${HOME}/.local/share}"
@@ -28,9 +30,12 @@ xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 userbin="$HOME/.local/bin"
 systemd="$xconfig/systemd/user"
 
-uname=$(uname | tr '[:upper:]' '[:lower:]')
-
-mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin" "$systemd"
+mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin"
+mkdir -p "${xcache}/zsh"
+mkdir -p "${xdata}/zsh"
+if [ "linux" = "$uname" ]; then
+  mkdir -p "$systemd"
+fi
 
 function link {
     link_src="$1"
@@ -74,8 +79,6 @@ done
 cd ..
 
 # deploy to XDG dirs
-mkdir -p "${xcache}/zsh"
-mkdir -p "${xdata}/zsh"
 deploy config "$xconfig"
 
 # deploy user executables
