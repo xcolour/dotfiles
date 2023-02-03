@@ -97,7 +97,6 @@ exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Shift+i exec swaylock
-    bindsym $mod+Shift+comma exec 1password --toggle
 
     # Media keys
     bindsym XF86AudioRaiseVolume exec ~/.local/bin/setvol up > $WOBSOCK
@@ -246,15 +245,12 @@ bar {
 # Apps
 #
 
-for_window [class="1Password"] floating enable
 for_window [app_id="firefox"] inhibit_idle fullscreen
-assign [class="Tauon Music Box"] workspace number 3
-assign [class="Joplin"] workspace number 4
+assign [app_id="firefox"] workspace number 1
 
-#
-# Notifications
-#
+workspace 2
+exec $term
+exec firefox &
 
-#exec mako
 
 include /etc/sway/config.d/*

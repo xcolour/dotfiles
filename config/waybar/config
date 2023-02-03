@@ -11,15 +11,14 @@
             "format": "{icon}",
             "format-icons": {
                 "1": "",
-                "2": "",
-                "3": "",
-                "4": ""
+                "2": ""
             }
         },
         "clock#local": {
             "interval": 1,
             "format": "{:%a %d %b %I:%M %p}",
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "today-format": "<b>{}</b>"
         },
         "temperature": {
             "critical-threshold": 80,
