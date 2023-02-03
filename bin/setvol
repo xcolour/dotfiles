@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep Volume | sed -e 's/.* \([0-9][0-9]*\)%.*/\1/')
+case $1 in
+    up)
+        increment=$(( 5 - ( current_volume % 5 ) ))
+        newvol=$(( current_volume + increment ))
+        if [ $newvol -gt 100 ]; then
+            newvol=100
+        fi
+        pactl set-sink-volume @DEFAULT_SINK@ $newvol%
+        echo $newvol;;
+    down)
+        increment=$(( ( ( current_volume - 1 ) % 5 ) + 1 ))
+        newvol=$(( current_volume - increment ))
+        if [ $newvol -lt 0 ]; then
+            newvol=0
+        fi
+        pactl set-sink-volume @DEFAULT_SINK@ $newvol%
+        echo $newvol;;
+esac

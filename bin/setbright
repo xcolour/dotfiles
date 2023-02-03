@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current=$(brightnessctl -m info | cut -d, -f4 | tr --delete '%')
+case $1 in
+    up)
+        increment=$(( 5 - ( current % 5 ) ))
+        new=$(( current + increment ))
+        if [ $new -gt 100 ]; then
+            new=100
+        fi
+        brightnessctl set $new% > /dev/null 2>&1
+        echo $new;;
+    down)
+        increment=$(( ( ( current - 1 ) % 5 ) + 1 ))
+        new=$(( current - increment ))
+        if [ $new -lt 0 ]; then
+            new=0
+        fi
+        brightnessctl set $new% > /dev/null 2>&1
+        echo $new;;
+esac
