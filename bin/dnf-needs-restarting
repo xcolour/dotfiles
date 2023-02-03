@@ -21,4 +21,6 @@ else
   icon=""
 fi
 
+# this is a literal expression for `jq`
+# shellcheck disable=SC2016
 $JQCMD --unbuffered -n -c '{tooltip: $ARGS.positional[0], text: $ARGS.positional[1]}' --args "$output" "$icon"
