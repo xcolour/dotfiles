@@ -251,5 +251,6 @@ workspace 2
 exec $term
 exec firefox &
 
+bindsym $mod+comma exec PATH=~/.local/bin:$PATH /usr/bin/passmenu
 
 include /etc/sway/config.d/*
