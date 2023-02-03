@@ -28,29 +28,42 @@ xconfig="${XDG_CONFIG_HOME:-${HOME}/.config}"
 userbin="$HOME/.local/bin"
 systemd="$xconfig/systemd/user"
 
+uname=$(uname | tr '[:upper:]' '[:lower:]')
+
 mkdir -p "$xcache" "$xdata" "$xconfig" "$userbin" "$systemd"
 
 function link {
-    src="$1"
-    dest="$2"
-    if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+    link_src="$1"
+    link_dest="$2"
+    if [ -e "$link_dest" ] && [ ! -L "$link_dest" ]; then
         mkdir -p "../dotfiles-backup"
-        mv "$dest" "../dotfiles-backup/."
+        mv "$link_dest" "../dotfiles-backup/."
     fi
-    if [ ! -e "$dest" ]; then
-        ln -sf "$src" "$dest"
+    if [ ! -e "$link_dest" ]; then
+        ln -sf "$link_src" "$link_dest"
     fi
 }
 
-# deploy to XDG dirs
-mkdir -p "${xcache}/zsh"
-mkdir -p "${xdata}/zsh"
-cd config
-for d in *
-do
-    link "$(pwd)/$d" "${xconfig}/$d"
-done
-cd ..
+function deploy {
+  deploy_src="$1"
+  deploy_dest="$2"
+  if [ -e "$deploy_src/all" ]; then
+    cd "$deploy_src/all"
+    for f in *
+    do
+        link "$(pwd)/${f}" "$deploy_dest/${f}"
+    done
+    cd ../..
+  fi
+  if [ -e "$deploy_src/$uname" ]; then
+    cd "$deploy_src/$uname"
+    for f in *
+    do
+        link "$(pwd)/${f}" "$deploy_dest/${f}"
+    done
+    cd ../..
+  fi
+}
 
 # deploy to home
 cd home
@@ -60,21 +73,16 @@ do
 done
 cd ..
 
+# deploy to XDG dirs
+mkdir -p "${xcache}/zsh"
+mkdir -p "${xdata}/zsh"
+deploy config "$xconfig"
+
 # deploy user executables
-cd bin
-for f in *
-do
-    link "$(pwd)/${f}" "$userbin/${f}"
-done
-cd ..
+deploy bin "$userbin"
 
 # deploy systemd user units
-cd systemd
-for f in *
-do
-    link "$(pwd)/${f}" "$systemd/${f}"
-done
-cd ..
+deploy systemd "$systemd"
 
 autoload="$HOME/.vim/autoload"
 mkdir -p "$autoload"
@@ -103,13 +111,15 @@ fi
 if [ ! -e "$HOME/.config/kitty/local.conf" ]; then
     cp local/kitty-local.conf config/kitty/local.conf
 fi
-dconfig="$xconfig/duplicity"
-mkdir -p "$dconfig"
-if [ ! -e "$dconfig/config" ]; then
-    cp local/duplicity-config "$dconfig/config"
-fi
-if [ ! -e "$dconfig/excludes" ]; then
-    cp local/duplicity-excludes "$dconfig/excludes"
+if [ "$uname" = "linux" ]; then
+  dconfig="$xconfig/duplicity"
+  mkdir -p "$dconfig"
+  if [ ! -e "$dconfig/config" ]; then
+      cp local/duplicity-config "$dconfig/config"
+  fi
+  if [ ! -e "$dconfig/excludes" ]; then
+      cp local/duplicity-excludes "$dconfig/excludes"
+  fi
 fi
 
 # download nerdfonts
