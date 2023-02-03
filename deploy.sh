@@ -148,3 +148,17 @@ if command -v fc-cache > /dev/null; then
         echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
     fi
 fi
+
+# download sway wallpaper
+if command -v sway > /dev/null; then
+  bg_dir="$xdata/backgrounds"
+  if [ ! -d "$bg_dir" ] || [ -z "$(ls -A "$bg_dir" 2> /dev/null)" ]; then
+    mkdir -p "$bg_dir"
+  fi
+  if [ ! -e "$bg_dir/sway.png" ]; then
+    $DLCMD "$bg_dir/sway.png" "https://raw.githubusercontent.com/swaywm/sway/master/assets/Sway_Wallpaper_Blue_1366x768.png"
+  fi
+  if [ ! -e "$bg_dir/default" ]; then
+    ln -s "$bg_dir/sway.png" "$bg_dir/default"
+  fi
+fi

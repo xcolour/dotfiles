@@ -21,8 +21,7 @@ smart_borders on
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png fill
+output * background ~/.local/share/backgrounds/default fill
 
 # Example configuration:
 #
