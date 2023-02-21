@@ -95,16 +95,6 @@ nnoremap <leader>r :ALEDetail<Enter>
 " visual
 "
 
-if has("termguicolors") && ( $COLORTERM == 'truecolor' || $COLORTERM == '24bit')
-  set termguicolors
-endif
-
-" kitty terminal doesn't support bg blanking
-" https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
-if ($TERM == 'xterm-kitty')
-  let &t_ut=''
-endif
-
 set background=light
 silent! colo tempus_dawn
 let g:airline_theme='tempus_dawn'

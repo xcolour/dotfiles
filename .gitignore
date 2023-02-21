@@ -1,6 +1,4 @@
-config/duplicity/config
-config/duplicity/excludes
 config/all/git/config-local
-config/all/kitty/local.conf
 config/all/zsh/00-local.zsh
+config/linux/kitty/local.conf
 dotfiles-backup
