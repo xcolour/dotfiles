@@ -22,9 +22,9 @@
         },
         "temperature": {
             "critical-threshold": 80,
-            "format": "{icon} {temperatureC}°C",
+            "format": "{icon}",
             "format-icons": ["", "", "", "", ""],
-            "tooltip": false
+            "tooltip-format": "Temperature:  {temperatureC}°C"
         },
         "battery#bat1": {
             "bat": "BAT0",
@@ -38,38 +38,30 @@
                 "1": 20,
                 "0": 5
             },
-            "format": "{icon} {capacity}%",
-            "format-charging-5": " {capacity}%",
-            "format-charging-4": " {capacity}%",
-            "format-charging-3": " {capacity}%",
-            "format-charging-2": " {capacity}%",
-            "format-charging-1": " {capacity}%",
-            "format-charging-0": " {capacity}%",
-            "format-icons": ["", "", "", "", "", ""]
+            "format": "{icon}",
+            "format-charging": "",
+            "format-icons": ["", "", "", "", ""],
+            "tooltip-format": "Battery: {capacity}%\n{timeTo}"
         },
         "network#wifi": {
             "interface": "wlp*",
             "format-ethernet": "",
-            "format-wifi": "  {signalStrength}%",
+            "format-wifi": "",
             "format-linked": "",
             "format-disconnected": "",
-            "tooltip-format": "{essid}\n{ifname}: {ipaddr}/{cidr}",
-            "on-click": "nm-connection-editor"
+            "tooltip-format": "Signal: {signalStrength}%\n{essid}\n{ifname}: {ipaddr}/{cidr}",
+            "on-click": "gnome-control-center wifi"
         },
         "pulseaudio": {
             "scroll-step": 1,
-            "format": "{icon} {volume}%",
-            "format-muted": "婢 {volume}%",
-            "format-bluetooth": "{icon} {volume}%",
-            "format-bluetooth-muted": "婢 {icon}",
+            "format": "{icon}",
+            "format-muted": "",
             "format-icons": {
                 "headphone": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["奄", "奔", "墳"]
+                "default": ["", ""]
             },
-            "on-click": "pavucontrol"
+            "tooltip-format": "Volume:  {volume}%\n{desc}",
+            "on-click": "gnome-control-center sound"
         },
         "idle_inhibitor": {
             "format": "{icon}",

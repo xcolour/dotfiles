@@ -16,7 +16,7 @@ fi
 set -u
 
 if ! output="$($DNFCMD needs-restarting -r)"; then
-  icon="勒"
+  icon=""
 else
   icon=""
 fi

@@ -1,7 +1,7 @@
 * {
     border-radius: 0;
     border: 0;
-    font-family: Noto Sans, JetBrainsMono Nerd Font;
+    font-family: "Noto Sans", "Font Awesome 5 Free";
     font-size: 11pt;
     text-shadow: none;
 }
@@ -10,6 +10,22 @@ window#waybar {
     background: #eff0f2;
     color: #4a4b4e;
     border-bottom: 1px solid #dee2e0;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: #eff0f2;
+    border-bottom: 1px solid #dee2e0;
+}
+
+.modules-left {
+    border-radius: 5px 0 0 0;
+    padding-left: 5px;
+}
+
+.modules-right {
+    border-radius: 0 5px 0 0;
 }
 
 tooltip {

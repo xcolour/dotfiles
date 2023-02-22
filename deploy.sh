@@ -44,9 +44,7 @@ function link {
         mkdir -p "../dotfiles-backup"
         mv "$link_dest" "../dotfiles-backup/."
     fi
-    if [ ! -e "$link_dest" ]; then
-        ln -sf "$link_src" "$link_dest"
-    fi
+    ln -snf "$link_src" "$link_dest"
 }
 
 function deploy {
@@ -106,14 +104,14 @@ cd ..
 
 # create local files
 if [ ! -e "$HOME/.config/zsh/00-local.zsh" ]; then
-    cp local/local.zsh config/zsh/00-local.zsh
+    cp local/local.zsh "$HOME/.config/zsh/00-local.zsh"
 fi
 if [ ! -e "$HOME/.config/git/config-local" ]; then
-    cp local/gitconfig-local config/git/config-local
+    cp local/gitconfig-local "$HOME/.config/git/config-local"
 fi
 if [ "$uname" = "linux" ]; then
   if [ ! -e "$HOME/.config/kitty/local.conf" ]; then
-      cp local/kitty-local.conf config/kitty/local.conf
+      cp local/kitty-local.conf "$HOME/.config/kitty/local.conf"
   fi
   dconfig="$xconfig/duplicity"
   mkdir -p "$dconfig"
@@ -125,7 +123,7 @@ if [ "$uname" = "linux" ]; then
   fi
 fi
 
-# download nerdfonts
+# download custom fonts
 if command -v fc-cache > /dev/null; then
     new_font=0
     function get_font {
@@ -141,22 +139,6 @@ if command -v fc-cache > /dev/null; then
             new_font=1
         fi
     }
-    get_font sourcecodepro-nerd \
-        https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip \
-        "Sauce Code Pro Medium Nerd Font Complete.ttf" \
-        "Sauce Code Pro Bold Nerd Font Complete.ttf" \
-        "Sauce Code Pro Medium Italic Nerd Font Complete.ttf" \
-        "Sauce Code Pro Bold Italic Nerd Font Complete.ttf"
-    get_font jetbrainsmono-nerd \
-        https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip \
-    "JetBrains Mono Regular Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Italic Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Bold Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Bold Italic Nerd Font Complete Mono.ttf" \
-    "JetBrains Mono Regular Nerd Font Complete.ttf" \
-    "JetBrains Mono Italic Nerd Font Complete.ttf" \
-    "JetBrains Mono Bold Nerd Font Complete.ttf" \
-    "JetBrains Mono Bold Italic Nerd Font Complete.ttf"
     if [ "$new_font" = "1" ]; then
         echo "Hint: Run 'fc-cache -v' to rebuild your font cache"
     fi
