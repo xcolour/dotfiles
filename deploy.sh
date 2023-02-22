@@ -110,9 +110,6 @@ if [ ! -e "$HOME/.config/git/config-local" ]; then
     cp local/gitconfig-local "$HOME/.config/git/config-local"
 fi
 if [ "$uname" = "linux" ]; then
-  if [ ! -e "$HOME/.config/kitty/local.conf" ]; then
-      cp local/kitty-local.conf "$HOME/.config/kitty/local.conf"
-  fi
   dconfig="$xconfig/duplicity"
   mkdir -p "$dconfig"
   if [ ! -e "$dconfig/config" ]; then
