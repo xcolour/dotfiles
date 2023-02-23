@@ -7,16 +7,16 @@
 }
 
 window#waybar {
-    background: #eff0f2;
-    color: #4a4b4e;
-    border-bottom: 1px solid #dee2e0;
+    background: #ffffff;
+    color: #4a484d;
+    border-bottom: 1px solid #efefef;
     border-left: 5px solid black;
     border-right: 5px solid black;
 }
 
 .modules-left, .modules-center, .modules-right {
-    background: #eff0f2;
-    border-bottom: 1px solid #dee2e0;
+    background: #ffffff;
+    border-bottom: 1px solid #efefef;
 }
 
 .modules-left {
@@ -29,13 +29,13 @@ window#waybar {
 }
 
 tooltip {
-    background: alpha(#eff0f2, 0.95);
-    border: 1px solid #dee2e0;
+    background: alpha(#ffffff, 0.95);
+    border: 1px solid #efefef;
     border-radius: 5px;
 }
 
 tooltip label {
-    color: #4a4b4e;
+    color: #4a484d;
 }
 
 label {
@@ -55,11 +55,11 @@ label {
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background: #eff0f2;
+    background: #ffffff;
 }
 
 #workspaces button.focused {
-    background: #dee2e0;
+    background: #efefef;
 }
 
 #idle_inhibitor {
@@ -68,11 +68,11 @@ label {
 }
 
 #idle_inhibitor.activated {
-    color: #eff0f2;
-    background: #a32a3a;
-    text-shadow: 1px 1px 0 #ae4e2a;
+    color: #ffffff;
+    background: #a50000;
+    text-shadow: 1px 1px 0 #992030;
 }
 
 #custom-reboot {
-    color: #a32a3a;
+    color: #a50000;
 }

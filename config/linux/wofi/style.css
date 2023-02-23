@@ -1,9 +1,9 @@
 window {
-    background: #eff0f2;
-    color: #4a4b4e;
+    background: #efefef;
+    color: #4a484d;
     font-family: Noto Sans;
-    font-size: 10pt;
-    border: 1px solid #dee2e0;
+    font-size: 11pt;
+    border: 1px solid #5e4b4f;
 }
 
 #input {
@@ -29,9 +29,13 @@ window {
 }
 
 #text {
-    color: #4a4b4e;
+    color: #4a484d;
+}
+
+#entry:selected #text{
+    color: #ffffff;
 }
 
 #entry:selected {
-    background: #dee2e0;
+    background: #2d45b0;
 }

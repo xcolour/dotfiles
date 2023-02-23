@@ -226,11 +226,18 @@ bindsym $mod+r mode "resize"
 #
 # Theme Colors
 #
+# derived from tempus totus
+# https://gitlab.com/protesilaos/tempus-themes
+#
+# efefef : white
+# 4a484d : black
+# 005289 : bright cyan
+# 992030 : bright red
 
 #                       border  bg      text    ind     c_border
-client.focused          #106e86 #dee2e0 #4a4b4e #a32a3a #106e86
-client.focused_inactive #dee2e0 #dee2e0 #4a4b4e #a32a3a #dee2e0
-client.unfocused        #dee2e0 #dee2e0 #4a4b4e #a32a3a #dee2e0
+client.focused          #005289 #efefef #4a484d #992030 #005289
+client.focused_inactive #efefef #efefef #4a484d #992030 #efefef
+client.unfocused        #efefef #efefef #4a484d #992030 #efefef
 
 #
 # Status Bar: waybar
