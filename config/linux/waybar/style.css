@@ -29,8 +29,8 @@ window#waybar {
 }
 
 tooltip {
-    background: alpha(#ffffff, 0.95);
-    border: 1px solid #efefef;
+    background: alpha(#efefef, 0.95);
+    border: 1px solid #5e4b4f;
     border-radius: 5px;
 }
 
