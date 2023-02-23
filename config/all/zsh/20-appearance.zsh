@@ -52,7 +52,7 @@ function repo_prompt_info {
     ref=$(git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null)
     if [ $? -eq 0 ]; then
         #repo=$(basename $(git rev-parse --show-toplevel))
-        echo "%{$fg[cyan]%}%{\e[1m%}${ref#refs/heads/}%{$reset_color%}"
+        echo "%{$fg[cyan]%}${ref#refs/heads/}%{$reset_color%}"
         return
     fi
 }
