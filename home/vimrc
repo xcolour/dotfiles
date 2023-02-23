@@ -95,8 +95,8 @@ nnoremap <leader>r :ALEDetail<Enter>
 "
 
 set background=light
-silent! colo tempus_dawn
-let g:airline_theme='tempus_dawn'
+silent! colo tempus_totus
+let g:airline_theme='tempus'
 set hlsearch
 syntax enable
 
