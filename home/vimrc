@@ -89,6 +89,7 @@ let g:ctrlp_map ='<leader>a'
 
 " ale
 nnoremap <leader>r :ALEDetail<Enter>
+let g:ale_linters_ignore = {'python': ['mypy']}  " mypy is too slow and doesn't support dmypy
 
 "
 " visual
